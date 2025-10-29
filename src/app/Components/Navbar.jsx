@@ -1,14 +1,17 @@
 "use client";
 import React, { useState } from "react";
+import Magnet from "./Magnet";
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <div className="bg-yellow-300">
+    <div className="hover:bg-[#EDE8D0] transition-all duration-500">
       <nav className="flex justify-around ">
-        <h1 className="text-3xl my-7 font-bold hover:text-white hover:bg-black p-5 rounded-full transition-all duration-500">
-          NEGM
-        </h1>
+        <Magnet padding={50} disabled={false} magnetStrength={2}>
+          <h1 className="text-3xl my-7 font-bold hover:text-white  rounded-full transition-all duration-500">
+            NEGM
+          </h1>
+        </Magnet>
         <div
           onClick={() => setMenuOpen(!menuOpen)}
           className=" transition-all duration-500 hover:text-white"
@@ -22,14 +25,14 @@ export default function Navbar() {
             menuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <div className="flex flex-col justify-around">
-            <li className="hover:underline m-2 hover:translate-x-5 transition-all duration-500 w-[30%]">
+          <div className="flex flex-col h-[50%]  justify-around">
+            <li className="hover:underline text-3xl m-2 hover:translate-x-5 transition-all duration-500 w-[30%]">
               Home
             </li>
-            <li className="hover:underline m-2 hover:translate-x-5 transition-all duration-500 w-[30%]">
+            <li className="hover:underline m-2 text-3xl hover:translate-x-5 transition-all duration-500 w-[30%]">
               About
             </li>
-            <li className="hover:underline m-2 hover:translate-x-5 transition-all duration-500 w-[30%]">
+            <li className="hover:underline m-2 text-3xl hover:translate-x-5 transition-all duration-500 w-[30%]">
               Contact
             </li>
           </div>

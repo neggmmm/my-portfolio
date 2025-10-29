@@ -1,15 +1,39 @@
+"use client";
+import { useEffect, useRef, useState } from "react";
+import Hero from "./Pages/Hero";
+import Projects from "./Pages/Projects";
+
 export default function Home() {
+  const skillsRef = useRef(null);
+  const [darkMode, setDarkMode] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setDarkMode(true);
+        } else {
+          setDarkMode(false);
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(skillsRef.current);
+    return () => observer.disconnect();
+  }, []);
   return (
-    <div className="grid grid-cols-3 m-10">
-      <div className="col-span-2">
-        <h1 className="text-6xl">ABDALKAREEM</h1>
-        <h2 className="text-6xl">NEGM</h2>
-        <p className="mt-10 text-xl">
-          <span className="hover:translate-y-2">Software Engineer</span> |
-          <span> Web Developer</span>
-        </p>
+    <div
+      className={`transition-colors duration-1000 ${
+        darkMode ? "bg-black text-white" : "bg-white text-black"
+      }`}
+    >
+      {console.log(skillsRef)}
+      <Hero />
+      <div className="flex justify-center items-center">
+        <div className="h-1 w-[80%]  bg-black"></div>
       </div>
-      <div className="">My social media links go here</div>
+      <div ref={skillsRef}>
+        <Projects />
+      </div>
     </div>
   );
 }
