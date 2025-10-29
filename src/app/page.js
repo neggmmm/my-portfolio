@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import Hero from "./Pages/Hero";
 import Projects from "./Pages/Projects";
+import CurvedLoop from "@/components/CurvedLoop";
 
 export default function Home() {
   const skillsRef = useRef(null);
@@ -15,7 +16,7 @@ export default function Home() {
           setDarkMode(false);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.3 }
     );
     observer.observe(skillsRef.current);
     return () => observer.disconnect();
@@ -26,11 +27,7 @@ export default function Home() {
         darkMode ? "bg-black text-white" : "bg-white text-black"
       }`}
     >
-      {console.log(skillsRef)}
       <Hero />
-      <div className="flex justify-center items-center">
-        <div className="h-1 w-[80%]  bg-black"></div>
-      </div>
       <div ref={skillsRef}>
         <Projects />
       </div>
