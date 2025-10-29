@@ -28,7 +28,7 @@ export default function Navbar() {
               menuOpen ? "translate-x-0" : "translate-x-full"
             }`}
           >
-            <div className="flex flex-col h-[50%]  justify-around">
+            <div className="flex flex-col h-[40%] content-end justify-around">
               <li className="hover:underline text-3xl m-2 hover:translate-x-5 transition-all duration-500 w-[30%]">
                 Home
               </li>

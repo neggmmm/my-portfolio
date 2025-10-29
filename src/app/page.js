@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Hero from "./Pages/Hero";
 import Projects from "./Pages/Projects";
 import CurvedLoop from "@/components/CurvedLoop";
+import Skills from "./Pages/Skills";
 
 export default function Home() {
   const skillsRef = useRef(null);
@@ -16,7 +17,7 @@ export default function Home() {
           setDarkMode(false);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.4 }
     );
     observer.observe(skillsRef.current);
     return () => observer.disconnect();
@@ -28,8 +29,10 @@ export default function Home() {
       }`}
     >
       <Hero />
+
+      <Projects />
       <div ref={skillsRef}>
-        <Projects />
+        <Skills />
       </div>
     </div>
   );
