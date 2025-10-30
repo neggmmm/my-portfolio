@@ -3,7 +3,7 @@ import React from "react";
 export default function ContactUs() {
   return (
     <div>
-      <div className="flex  justify-between flex-col px-20 py-10 bg-black text-[#EDE8D0] sticky top-0 h-[100vh]">
+      <div className="flex  justify-between flex-col px-20 py-10 bg-black text-[#EDE8D0] sticky top-0 h-[100vh] z-21">
         <div>
           <p className="text-9xl">NEGM</p>
         </div>

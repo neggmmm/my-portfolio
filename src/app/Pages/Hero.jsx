@@ -25,7 +25,7 @@ export default function Hero() {
                 <span>Software Engineer </span>|<span> Web Developer</span>
               </div>
             </div>
-            <div className="fixed bottom-30 right-[50%] flex justify-around items-end">
+            <div className="fixed bottom-30 right-[40%] flex ">
               <button className="ml-5 mt-20 px-5 py-4 bg-black text-white rounded-full block hover:text-[#EDE8D0] transition-colors duration-300">
                 Contact Me
               </button>
