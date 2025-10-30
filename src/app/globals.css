@@ -110,6 +110,9 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+.text-9xl {
+  font-size: 30rem;
+}
 @layer base {
   * {
     @apply border-border outline-ring/50;

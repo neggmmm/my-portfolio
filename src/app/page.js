@@ -4,6 +4,7 @@ import Hero from "./Pages/Hero";
 import Projects from "./Pages/Projects";
 import CurvedLoop from "@/components/CurvedLoop";
 import Skills from "./Pages/Skills";
+import ContactUs from "./Pages/ContactUs";
 
 export default function Home() {
   const skillsRef = useRef(null);
@@ -34,6 +35,7 @@ export default function Home() {
       <div ref={skillsRef}>
         <Skills />
       </div>
+      <ContactUs />
     </div>
   );
 }
