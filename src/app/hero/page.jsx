@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import TextPressure from "../Components/TextPressure";
 import CurvedLoop from "../Components/CurvedLoop";
