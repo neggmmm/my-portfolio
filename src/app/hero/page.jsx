@@ -2,7 +2,6 @@ import React from "react";
 import TextPressure from "../Components/TextPressure";
 import CurvedLoop from "../Components/CurvedLoop";
 import Magnet from "../Components/Magnet";
-import ClickSpark from "../Components/ClickSpark";
 import {  useDarkMode } from "../context/DarkModeContext";
 import Link from "next/link";
 

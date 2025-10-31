@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import Magnet from "./Magnet";
 import Divider from "./Divider";
 import Link from "next/link";
 import { HiArrowTurnDownRight } from "react-icons/hi2";
