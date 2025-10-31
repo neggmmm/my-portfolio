@@ -1,6 +1,5 @@
 'use client'
 import React, { useState } from "react";
-import ClickSpark from "../Components/ClickSpark";
 
 export default function ContactUs() {
     const [userNameFocused, setUserNameFocused] = useState(false)
@@ -65,15 +64,7 @@ export default function ContactUs() {
                                     id="message" className="bg-[#121212]  border-b-4 border-[#e9d6d6] py-2 focus:outline-none"></textarea>
                             </div>
                             <div className="bg-white duration-300 text-black py-2 mt-3 hover:bg-[#EDE8D0]  transition-all">
-                                <ClickSpark
-                                    sparkColor='#fff'
-                                    sparkSize={10}
-                                    sparkRadius={15}
-                                    sparkCount={8}
-                                    duration={400}
-                                >
                                     <button className="px-2  text-center w-full">Send Your Message!</button>
-                                </ClickSpark>
                             </div>
                         </div>
                     </div>
