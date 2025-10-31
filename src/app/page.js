@@ -1,14 +1,15 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import Hero from "./Pages/Hero";
-import Projects from "./Pages/Projects";
-import Skills from "./Pages/Skills";
+import { useEffect, useRef } from "react";
+import { useDarkMode } from "./context/DarkModeContext";
 import ContactUs from "./contactUs/page";
+import Projects from "./projects/page";
+import Hero from "./hero/page";
+import Skills from "./skills/page";
 
 
 export default function Home() {
   const skillsRef = useRef(null);
-  const [darkMode, setDarkMode] = useState(false);
+  const { darkMode, setDarkMode } = useDarkMode();
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {

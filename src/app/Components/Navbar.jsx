@@ -4,22 +4,25 @@ import Magnet from "./Magnet";
 import Divider from "./Divider";
 import Link from "next/link";
 import { HiArrowTurnDownRight } from "react-icons/hi2";
+import { useDarkMode } from "../context/DarkModeContext";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  const { darkMode } = useDarkMode();
   return (
     <div className="fixed top-0 w-full  ">
-      <div className="hover:bg-[#EDE8D0] transition-all duration-500 ">
+      <div className={`${darkMode?"bg-white":""} hover:bg-[#EDE8D0] transition-all duration-500 `} >
         <nav className="flex justify-between mx-20">
-          <Magnet padding={50} disabled={false} magnetStrength={2}>
+          <Link href={"#hero"}>
             <h1
+            
               className={` text-3xl my-7 font-bold hover:text-white  rounded-full transition-all duration-500`}
             >
               NEGM
             </h1>
-          </Magnet>
+          </Link>
           <div
             onClick={() => {
               setMenuOpen(!menuOpen);
@@ -31,9 +34,11 @@ export default function Navbar() {
               menuOpen ? "opacity-0" : "opacity-100"
             }`}
           >
-            <div className="translate-y-9 h-[2px] w-7 bg-black"></div>
-            <div className="translate-y-11 h-[2px]  w-7 bg-black"></div>
-            
+          
+            {/* <div className={`${darkMode?"bg-white":"bg-black"} translate-y-9 h-[2px] w-7 bg-black`} ></div>
+            <div className={`${darkMode?"bg-white":"bg-black"} translate-y-11 h-[2px] w-7 bg-black`} ></div> */}
+            <div className={` translate-y-9 h-[2px] w-7 bg-black`} ></div>
+            <div className={` translate-y-11 h-[2px] w-7 bg-black`} ></div>
           </div>
           <ul
             className={` fixed right-0 top-0 w-[35%] h-full duration-500 bg-white ${
@@ -105,7 +110,7 @@ export default function Navbar() {
               </div>
               <div className="my-5">
                 <div className="flex justify-center">
-                  <Link href={"/contactUs"}>
+                  <Link href={"#contactUs"}>
                   <button className="mt-20 group p-5 cursor-pointer relative  text-6xl font-normal border-0 flex items-center justify-centerbg-transparent text-black h-30 w-150  overflow-hidden  transition-all duration-400">
                     <span className="group-hover:w-full absolute  left-0  h-full   w-5  border-y border-l-2 border-black transition-all duration-500"></span>
                     <div className="group-hover:opacity-0 flex justify-around absolute translate-x-0 transition-all duration-200">
