@@ -43,7 +43,7 @@ export default function ContactUs() {
                  className="bg-[#121212] border-b-4 border-[#e9d6d6] py-2 focus:outline-none"></input>
               </div>
                 {/* PHONE NUMBER */}
-                {/* TEST */}
+                {/* TEST 2 */}
               <div className="flex flex-col my-4">
                 <label
                   className={`${phoneNumberFocused || clientData.phoneNumber ? "translate-y-0 text-[#e9d6d6] font-bold" : "translate-y-9"} transition-all duration-500 text-[#aaa] focus:text-[#EDE8D0]`} htmlFor="phoneNumber">Phone Number</label>
