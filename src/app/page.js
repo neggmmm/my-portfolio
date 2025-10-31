@@ -2,9 +2,9 @@
 import { useEffect, useRef, useState } from "react";
 import Hero from "./Pages/Hero";
 import Projects from "./Pages/Projects";
-import CurvedLoop from "@/components/CurvedLoop";
 import Skills from "./Pages/Skills";
-import ContactUs from "./Pages/ContactUs";
+import ContactUs from "./contactUs/page";
+
 
 export default function Home() {
   const skillsRef = useRef(null);
