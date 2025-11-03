@@ -31,7 +31,7 @@ export default function Hero() {
                 <span>Software Engineer </span>|<span> Web Developer</span>
               </div>
             </div>
-            <div className="fixed bottom-40 right-[50%] flex ">
+            <div className=" flex ">
               <Magnet padding={20} disabled={false} magnetStrength={1.7}>
                 <Link href={"#contactUs"}>
                 <h1
@@ -43,7 +43,7 @@ export default function Hero() {
               </Magnet>
             </div>
           </div>
-          <div className="w-screen ">
+          {/* <div className="w-screen ">
             <CurvedLoop
               marqueeText="React Developer ✦ Software Engineer ✦"
               speed={1.5}
@@ -52,7 +52,7 @@ export default function Hero() {
               interactive={true}
               className="custom-text-style"
             />
-          </div>
+          </div> */}
         </div>
       </div>
       

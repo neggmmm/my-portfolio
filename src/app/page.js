@@ -5,10 +5,12 @@ import ContactUs from "./contactUs/page";
 import Projects from "./projects/page";
 import Hero from "./hero/page";
 import Skills from "./skills/page";
+import About from "./about/page";
 
 
 export default function Home() {
   const skillsRef = useRef(null);
+  const aboutRef = useRef(null)
   const { darkMode, setDarkMode } = useDarkMode();
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -22,6 +24,7 @@ export default function Home() {
       { threshold: 0.4 }
     );
     observer.observe(skillsRef.current);
+    // observer.observe(aboutRef.current);
     return () => observer.disconnect();
   }, []);
   return (
@@ -31,7 +34,9 @@ export default function Home() {
       }`}
     >
       <Hero />
-
+      <div ref={aboutRef}>
+      <About />
+      </div>
       <Projects />
       <div ref={skillsRef}>
         <Skills />

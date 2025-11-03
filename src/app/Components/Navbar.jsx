@@ -11,13 +11,13 @@ export default function Navbar() {
   const [isClicked, setIsClicked] = useState(false);
   const { darkMode } = useDarkMode();
   return (
-    <div className="fixed top-0 w-full  ">
-      <div className={`${darkMode?"bg-white":""} hover:bg-[#EDE8D0] transition-all duration-500 `} >
+    <div className="fixed top-0 w-full z-50 bg-white">
+      <div className={`${darkMode?"":""} hover:bg-[#EDE8D0] transition-all duration-500 `} >
         <nav className="flex justify-between mx-20">
           <Link href={"#hero"}>
             <h1
             
-              className={` text-3xl my-7 font-bold hover:text-white  rounded-full transition-all duration-500`}
+              className={` ${darkMode?"text-white":"text-black"} text-3xl my-7 font-bold hover:text-white  rounded-full transition-all duration-500`}
             >
               NEGM
             </h1>
@@ -34,10 +34,10 @@ export default function Navbar() {
             }`}
           >
           
-            {/* <div className={`${darkMode?"bg-white":"bg-black"} translate-y-9 h-[2px] w-7 bg-black`} ></div>
-            <div className={`${darkMode?"bg-white":"bg-black"} translate-y-11 h-[2px] w-7 bg-black`} ></div> */}
-            <div className={` translate-y-9 h-[2px] w-7 bg-black`} ></div>
-            <div className={` translate-y-11 h-[2px] w-7 bg-black`} ></div>
+            <div className={`${darkMode?"bg-white":"bg-black"} translate-y-9 h-[2px] w-7 bg-black`} ></div>
+            <div className={`${darkMode?"bg-white":"bg-black"} translate-y-11 h-[2px] w-7 bg-black`} ></div>
+            {/* <div className={` translate-y-9 h-[2px] w-7 bg-black`} ></div>
+            <div className={` translate-y-11 h-[2px] w-7 bg-black`} ></div> */}
           </div>
           <ul
             className={` fixed right-0 top-0 w-[35%] h-full duration-500 bg-white ${
@@ -54,26 +54,26 @@ export default function Navbar() {
               <div>
                 <div className="mt-20">
                   <p className="text-4xl mb-4 mx-15">Navigation</p>
-                  <div className="group transition-all duration-500">
-                    <li className="px-15 py-2 font-semibold group-hover:bg-black group-hover:text-[#EDE8D0] transition-all duration-500">
+                  <div className="group ">
+                    <li className="px-15 py-2 font-semibold group-hover:bg-black group-hover:text-[#EDE8D0] ">
                       Home
                     </li>
                     <Divider />
                   </div>
-                  <div className="group transition-all duration-500">
-                    <li className="px-15 p-2 font-semibold group-hover:bg-black group-hover:text-[#EDE8D0] transition-all duration-500">
+                  <div className="group">
+                    <li className="px-15 p-2 font-semibold group-hover:bg-black group-hover:text-[#EDE8D0]">
                       Projects
                     </li>
                     <Divider />
                   </div>
-                  <div className="group transition-all duration-500">
-                    <li className="px-15 p-2 font-semibold group-hover:bg-black group-hover:text-[#EDE8D0] transition-all duration-500">
+                  <div className="group">
+                    <li className="px-15 p-2 font-semibold group-hover:bg-black group-hover:text-[#EDE8D0] ">
                       Skills
                     </li>
                     <Divider />
                   </div>
-                  <div className="group transition-all duration-500">
-                    <li className="px-15 p-2 font-semibold group-hover:bg-black group-hover:text-[#EDE8D0] transition-all duration-500">
+                  <div className="group">
+                    <li className="px-15 p-2 font-semibold group-hover:bg-black group-hover:text-[#EDE8D0]">
                       Contact-us
                     </li>
                     <Divider />
@@ -81,26 +81,26 @@ export default function Navbar() {
                 </div>
                 <div className="my-5">
                   <p className="text-4xl mb-4 mx-15">Socials</p>
-                  <div className="group transition-all duration-500">
-                    <li className="px-15 py-2 font-semibold group-hover:bg-black group-hover:text-[#EDE8D0] transition-all duration-500">
+                  <div className="group">
+                    <li className="px-15 py-2 font-semibold group-hover:bg-black group-hover:text-[#EDE8D0] ">
                       LINKEDIN
                     </li>
                     <Divider />
                   </div>
-                  <div className="group transition-all duration-500">
-                    <li className="px-15 py-2 font-semibold group-hover:bg-black group-hover:text-[#EDE8D0] transition-all duration-500">
+                  <div className="group">
+                    <li className="px-15 py-2 font-semibold group-hover:bg-black group-hover:text-[#EDE8D0] ">
                       GITHUB
                     </li>
                     <Divider />
                   </div>
-                  <div className="group transition-all duration-500">
-                    <li className="px-15 py-2 font-semibold group-hover:bg-black group-hover:text-[#EDE8D0] transition-all duration-500">
+                  <div className="group ">
+                    <li className="px-15 py-2 font-semibold group-hover:bg-black group-hover:text-[#EDE8D0] ">
                       WHATSAPP
                     </li>
                     <Divider />
                   </div>
-                  <div className="group transition-all duration-500">
-                    <li className="px-15 py-2 font-semibold group-hover:bg-black group-hover:text-[#EDE8D0] transition-all duration-500">
+                  <div className="group">
+                    <li className="px-15 py-2 font-semibold group-hover:bg-black group-hover:text-[#EDE8D0]">
                       +20 010 636 814 59
                     </li>
                     <Divider />
