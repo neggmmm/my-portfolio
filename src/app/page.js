@@ -40,8 +40,9 @@ export default function Home() {
       <Projects />
       <div ref={skillsRef}>
         <Skills />
-      </div>
+      
       <ContactUs />
+      </div>
     </div>
   );
 }

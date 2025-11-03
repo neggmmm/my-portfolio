@@ -11,7 +11,7 @@ export default function Navbar() {
   const [isClicked, setIsClicked] = useState(false);
   const { darkMode } = useDarkMode();
   return (
-    <div className="fixed top-0 w-full z-50 bg-white">
+    <div className={`fixed top-0 w-full z-50 ${darkMode?"bg-transparent":"bg-white"}`}>
       <div className={`${darkMode?"":""} hover:bg-[#EDE8D0] transition-all duration-500 `} >
         <nav className="flex justify-between mx-20">
           <Link href={"#hero"}>
