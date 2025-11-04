@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { MdArrowOutward } from "react-icons/md";
 import { useDarkMode } from "../context/DarkModeContext";
+import Link from "next/link";
 
 
 export default function Projects() {
@@ -102,8 +103,9 @@ export default function Projects() {
     >
 
       <div className="sticky top-23">
+        <Link target="_blank" href="https://e-commerce-mern-beige.vercel.app/">
         <div
-          className={`${darkMode ? "bg-black text-white  hover:bg-white hover:text-black" : "bg-white text-black  hover:bg-black hover:text-white"} border transition-all border-black items-center px-3 rounded-t-2xl w-full h-8 flex justify-between font-bold`}>
+          className={`${darkMode ? "bg-black text-white  hover:bg-white hover:text-black" : "bg-white text-black  hover:bg-black hover:text-white"}  border transition-all border-black items-center px-3 rounded-t-2xl w-full h-8 flex justify-between font-bold`}>
           <p>
             X Market
           </p>
@@ -114,6 +116,7 @@ export default function Projects() {
             <MdArrowOutward />
           </p>
         </div>
+        </Link>
         <div className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-white">
           {/* Background image that fills the entire card */}
           <Image
@@ -137,6 +140,7 @@ export default function Projects() {
       </div>
 
       <div className="sticky top-28">
+        <Link target="_blank" href="https://e-commerce-mern-beige.vercel.app/">
         <div className={`${darkMode ? "bg-black text-white  hover:bg-white hover:text-black" : "bg-white text-black  hover:bg-black hover:text-white"} border transition-all border-black items-center px-3 rounded-t-2xl w-full h-8 flex justify-between font-bold`}>
           <p>
             NEGM's Portfolio
@@ -148,10 +152,11 @@ export default function Projects() {
             <MdArrowOutward />
           </p>
         </div>
+        </Link>
           <div className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-white">
           {/* Background image that fills the entire card */}
           <Image
-            src="/project-2.png"
+            src="/project-3.png"
             alt="e-commerce"
             fill  // Next.js shortcut for full width + height
             className={`${btnHoverd?"opacity-100":"opacity-50"} transition-all duration-300 object-cover`} // covers area + slightly faded
@@ -171,7 +176,9 @@ export default function Projects() {
       </div>
 
       <div className="sticky top-33">
-        <div className={`${darkMode ? "bg-black text-white  hover:bg-white hover:text-black" : "bg-white text-black  hover:bg-black hover:text-white"} border transition-all border-black items-center px-3 rounded-t-2xl w-full h-8 flex justify-between font-bold`}>
+        
+          <Link target="_blank" href="https://e-commerce-mern-beige.vercel.app/">
+          <div className={`${darkMode ? "bg-black text-white  hover:bg-white hover:text-black" : "bg-white text-black  hover:bg-black hover:text-white"} border transition-all border-black items-center px-3 rounded-t-2xl w-full h-8 flex justify-between font-bold`}>
           <p>
             NEGM's Portfolio
           </p>
@@ -181,12 +188,13 @@ export default function Projects() {
           <p>
             <MdArrowOutward />
           </p>
+          
         </div>
-
+      </Link>
          <div className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-white">
           {/* Background image that fills the entire card */}
           <Image
-            src="/project-3.png"
+            src="/project-1.png"
             alt="e-commerce"
             fill  // Next.js shortcut for full width + height
             className={`${btnHoverd?"opacity-100":"opacity-50"} transition-all duration-300 object-cover`} // covers area + slightly faded
@@ -206,6 +214,7 @@ export default function Projects() {
       </div>
       <div className="h-[150vh]">
         <div className="sticky top-38">
+          <Link target="_blank" href="https://e-commerce-mern-beige.vercel.app/">
           <div className={`${darkMode ? "bg-black text-white  hover:bg-white hover:text-black" : "bg-white text-black  hover:bg-black hover:text-white"} border transition-all border-black items-center px-3 rounded-t-2xl w-full h-8 flex justify-between font-bold`}>
             <p>
               NEGM's Portfolio
@@ -217,12 +226,12 @@ export default function Projects() {
               <MdArrowOutward />
             </p>
           </div>
-    
+          </Link>
            
            <div  ref={lastProjectRef} className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-white">
           {/* Background image that fills the entire card */}
           <Image
-            src="/project-2.png"
+            src="/project-3.png"
             alt="e-commerce"
             fill  // Next.js shortcut for full width + height
             className={`${btnHoverd?"opacity-100":"opacity-50"} transition-all duration-300 object-cover`} // covers area + slightly faded

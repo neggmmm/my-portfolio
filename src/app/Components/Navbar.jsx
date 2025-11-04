@@ -11,13 +11,13 @@ export default function Navbar() {
   const [isClicked, setIsClicked] = useState(false);
   const { darkMode } = useDarkMode();
   return (
-    <div className={`fixed top-0 w-full z-50 ${darkMode?"bg-transparent":"bg-white"}`}>
+    <div className={`fixed top-0 w-full z-50 select-none ${darkMode?"bg-transparent":"bg-white"}`}>
       <div className={`${darkMode?"":""}  transition-all duration-500 `} >
         <nav className="flex justify-between mx-20">
           <Link href={"/"}>
             <h1
             
-              className={` ${darkMode?"text-white":"text-black"} text-3xl my-7 font-bold rounded-full transition-all duration-500`}
+              className={` ${darkMode?"text-white":"text-black"}  text-3xl my-7 font-bold rounded-full transition-all duration-500`}
             >
               NEGM
             </h1>
@@ -29,7 +29,7 @@ export default function Navbar() {
             }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className={`transition-all duration-500   ${
+            className={`transition-all duration-500 cursor-pointer   ${
               menuOpen ? "opacity-0" : "opacity-100"
             }`}
           >
@@ -46,7 +46,7 @@ export default function Navbar() {
           >
             <div
               onClick={() => setMenuOpen(!menuOpen)}
-              className="absolute text-3xl my-7 right-20"
+              className="absolute text-3xl my-7 right-20 cursor-pointer"
             >
               X
             </div>
@@ -56,25 +56,25 @@ export default function Navbar() {
                   <p className="text-4xl mb-4 mx-15">Navigation</p>
                   <div className="group ">
                     <li className="px-15 py-2 font-semibold group-hover:bg-black group-hover:text-[#EDE8D0] ">
-                      Home
+                      HOME
                     </li>
                     <Divider />
                   </div>
                   <div className="group">
                     <li className="px-15 p-2 font-semibold group-hover:bg-black group-hover:text-[#EDE8D0]">
-                      Projects
+                      PROJECTS
                     </li>
                     <Divider />
                   </div>
                   <div className="group">
                     <li className="px-15 p-2 font-semibold group-hover:bg-black group-hover:text-[#EDE8D0] ">
-                      Skills
+                      SKILLS
                     </li>
                     <Divider />
                   </div>
                   <div className="group">
                     <li className="px-15 p-2 font-semibold group-hover:bg-black group-hover:text-[#EDE8D0]">
-                      Contact-us
+                      CONTACT US
                     </li>
                     <Divider />
                   </div>
@@ -83,13 +83,17 @@ export default function Navbar() {
                   <p className="text-4xl mb-4 mx-15">Socials</p>
                   <div className="group">
                     <li className="px-15 py-2 font-semibold group-hover:bg-black group-hover:text-[#EDE8D0] ">
+                      <Link target="_blank" href="https://linkedin.com/in/neggmmm" >
                       LINKEDIN
+                    </Link>
                     </li>
                     <Divider />
                   </div>
                   <div className="group">
                     <li className="px-15 py-2 font-semibold group-hover:bg-black group-hover:text-[#EDE8D0] ">
+                    <Link target="_blank" href="https://github.com/neggmmm" >
                       GITHUB
+                    </Link>
                     </li>
                     <Divider />
                   </div>
@@ -100,7 +104,7 @@ export default function Navbar() {
                     <Divider />
                   </div>
                   <div className="group">
-                    <li className="px-15 py-2 font-semibold group-hover:bg-black group-hover:text-[#EDE8D0]">
+                    <li className="px-15 py-2 font-semibold group-hover:bg-black group-hover:text-[#EDE8D0] select-text">
                       +20 010 636 814 59
                     </li>
                     <Divider />

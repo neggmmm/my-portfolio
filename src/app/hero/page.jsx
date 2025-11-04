@@ -14,7 +14,7 @@ export default function Hero() {
 
       <div className="grid grid-cols-3 my-30 h-[70%]">
         <div className="col-span-2 flex flex-col justify-between">
-          <div className="flex flex-col justify-center mx-20">
+          <div className="flex flex-col justify-center mx-20 w-full ">
             <TextPressure
               text="Abdalkareem Negm"
               flex={true}
@@ -24,7 +24,7 @@ export default function Hero() {
               weight={true}
               textColor="black"
               strokeColor="#ff0000"
-              minFontSize={44}
+              minFontSize={200}
             />
             <div className="text-3xl flex content-between justify-between flex-col">
               <div className="">
@@ -49,7 +49,7 @@ export default function Hero() {
             text="OPEN TO WORK | FULLSTACK | "
             onHover="pause"
             spinDuration={20}
-            className="custom-class"
+            className="custom-class monoton-regular"
           />
           </div>
           </Link>

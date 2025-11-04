@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <div
       className={`transition-colors duration-1000 ${
-        darkMode ? "bg-black text-white" : "bg-white text-black"
+        darkMode ? "bg-[#111] text-white" : "bg-white text-[#111]"
       }`}
     >
       <Hero />

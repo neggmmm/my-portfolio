@@ -77,7 +77,7 @@ export default function ContactUs() {
                                 id="message" className="bg-transparent border-b-4 border-[#e9d6d6] py-2 focus:outline-none"></textarea>
                         </div>
                         <div className="bg-white duration-300 text-black py-2 hover:bg-[#EDE8D0] my-5 transition-all">
-                            <button className="px-2  text-center w-full">Send Your Message!</button>
+                            <button className="px-2  text-center w-full ">Send Your Message!</button>
                         </div>
                     </div>
                 </div>
@@ -104,7 +104,7 @@ export default function ContactUs() {
                         delay={550}
                         animateBy="words"
                         direction="top"
-                        className="text-9xl tracking-tighter"
+                        className="text-9xl tracking-tighter "
                     />
                 </div>
             </div>
