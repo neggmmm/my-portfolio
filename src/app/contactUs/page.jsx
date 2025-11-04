@@ -12,7 +12,6 @@ export default function ContactUs() {
     const [phoneNumberFocused, setPhoneNumberFocused] = useState(false)
     const [messageFocused, setMessageFocused] = useState(false)
     const [clientData, setClientData] = useState({ name: "", email: "", phoneNumber: "", message: "" })
-    const { setDarkMode, darkMode } = useDarkMode();
     return (
         <div id="contactUs">
            
@@ -20,9 +19,20 @@ export default function ContactUs() {
                 
                 <div className="flex w-full justify-between items-end">
                     <div className="mb-30">
-                        <p className="text-6xl">Let's Get Inspired Together!</p>
-                        <p className="text-2xl ">Send Your message</p>
-                        
+                        <BlurText
+                        text="Let's Get Inspired Together!"
+                        delay={150}
+                        animateBy="words"
+                        direction="top"
+                        className="text-6xl"
+                    />
+                       <BlurText
+                        text="Send Your message"
+                        delay={150}
+                        animateBy="words"
+                        direction="bottom"
+                        className="text-3xl"
+                    />
                     </div>
                     <div className="flex flex-col w-[40%] text-white z-30">
                         {/* Name */}
@@ -72,7 +82,13 @@ export default function ContactUs() {
                     </div>
                 </div>
                 <div className="flex flex-col justify-center items-center">
-                <p className="text-5xl my-5 text-[#EDE8D0] select-none">Get in Touch</p>
+                  <BlurText
+                        text="Get in Touch"
+                        delay={350}
+                        animateBy="words"
+                        direction="top"
+                        className="text-3xl"
+                    />
                 <div className="flex justify-center">
                     <Link href={"https://github.com/neggmmm"} target="_blank"  className="text-3xl hover:translate-y-1 hover:text-[#50107a]/60 transition-all text-[#EDE8D0] mx-5">
                     <VscGithub />
@@ -84,11 +100,11 @@ export default function ContactUs() {
                 </div>
                 <div className="absolute top-20 left-20 opacity-20 z-20 select-none">
                      <BlurText
-                        text="NEGM"
-                        delay={150}
+                        text="N E G M"
+                        delay={550}
                         animateBy="words"
                         direction="top"
-                        className="text-9xl"
+                        className="text-9xl tracking-tighter"
                     />
                 </div>
             </div>
