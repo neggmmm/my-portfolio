@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { MdArrowOutward } from "react-icons/md";
+import { useDarkMode } from "../context/DarkModeContext";
 
 
 export default function Projects() {
@@ -11,46 +12,66 @@ export default function Projects() {
   const [scrollDir, setScrollDir] = useState("down");
   const projectsRef = useRef(null);
   const [scale, setScale] = useState(1);
+  const { setDarkMode, darkMode } = useDarkMode();
+  const [btnHoverd, setBtnHovered] = useState(false);
+  useEffect(() => {
+    let ticking = false; // prevents spamming scroll updates
 
+    const handleScroll = () => {
+      if (!projectsRef.current) return;
 
-useEffect(() => {
-  let ticking = false; // prevents spamming scroll updates
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const rect = projectsRef.current.getBoundingClientRect();
 
-  const handleScroll = () => {
-    if (!projectsRef.current) return;
+          // Adjust scroll positions for smoother timing
+          const startZoomAt = 1400.17;
+          const endZoomAt = 800.65;
 
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        const rect = projectsRef.current.getBoundingClientRect();
+          // Calculate scroll progress (between 0 → 1)
+          if (rect.bottom < startZoomAt && rect.bottom > endZoomAt) {
+            const progress =
+              1 - (rect.bottom - endZoomAt) / (startZoomAt - endZoomAt);
 
-        // Adjust scroll positions for smoother timing
-        const startZoomAt = 1400.17;
-        const endZoomAt = 800.65;
+            // Scale goes from 1 → 0.95 instead of 1 → 0.9
+            const newScale = 1 - progress * 0.05;
+            setScale(newScale);
+          } else if (rect.bottom <= endZoomAt) {
+            setScale(0.9); // final zoom level
+          } else {
+            setScale(1);
+          }
 
-        // Calculate scroll progress (between 0 → 1)
-        if (rect.bottom < startZoomAt && rect.bottom > endZoomAt) {
-          const progress =
-            1 - (rect.bottom - endZoomAt) / (startZoomAt - endZoomAt);
+          ticking = false;
+        });
 
-          // Scale goes from 1 → 0.95 instead of 1 → 0.9
-          const newScale = 1 - progress * 0.05;
-          setScale(newScale);
-        } else if (rect.bottom <= endZoomAt) {
-          setScale(0.9); // final zoom level
-        } else {
-          setScale(1);
-        }
+        ticking = true;
+      }
+    };
 
-        ticking = false;
-      });
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-      ticking = true;
-    }
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!lastProjectRef.current) return;
 
-  window.addEventListener("scroll", handleScroll);
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []);
+      const rect = lastProjectRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // When the top of the last project has scrolled 100vh up
+      if (rect.bottom < windowHeight) {
+        // this means you've scrolled 100px into the 150vh section
+        setTimeout(() => setDarkMode(true), 100);
+      } else {
+        setTimeout(() => setDarkMode(false), 100);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [setDarkMode]);
 
 
   useEffect(() => {
@@ -79,9 +100,10 @@ useEffect(() => {
       }}
       className="transition-transform duration-400"
     >
-      
+
       <div className="sticky top-23">
-      <div className="border hover:bg-black hover:text-white transition-all border-black items-center px-3 rounded-t-2xl bg-white   w-full h-8 flex justify-between font-bold">
+        <div
+          className={`${darkMode ? "bg-black text-white  hover:bg-white hover:text-black" : "bg-white text-black  hover:bg-black hover:text-white"} border transition-all border-black items-center px-3 rounded-t-2xl w-full h-8 flex justify-between font-bold`}>
           <p>
             X Market
           </p>
@@ -89,44 +111,33 @@ useEffect(() => {
             E-Commerce
           </p>
           <p>
-           <MdArrowOutward />
+            <MdArrowOutward />
           </p>
         </div>
-      <div className="flex h-[100vh] justify-between sticky  top-28  bg-[#EDE8D0] w-full ">
-        
-
-        <div className=" flex  justify-between items-center w-[40%]">
-          <div className="h-[80%] flex flex-col justify-around">
-            <h2 className="text-6xl font-bold">Electronics E-Commerce</h2>
-            <div className="text-[#444]">
-              <p className="">
-                I have built an E-commerce using React, tailwindCSS, MUI for
-                Frontend, useMemo for lazy Loading{" "}
-              </p>
-              <p>For backend i have used Node, Express, Mongoose, MongoDB</p>
-            </div>
-            <p className="text-3xl text-black mb-20 hover:underline my-20 flex justify-center">
-              Try it out
-            </p>
-          </div>
-        </div>
-       
-        
-        <div className=" flex items-center hover:opacity-50 transition-all duration-500">
+        <div className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-white">
+          {/* Background image that fills the entire card */}
           <Image
-            width={1000}
-            height={1000}
             src="/project-1.png"
             alt="e-commerce"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            fill  // Next.js shortcut for full width + height
+            className={`${btnHoverd?"opacity-100":"opacity-80"} transition-all duration-300 object-cover`} // covers area + slightly faded
           />
+
+          {/* Overlay text and content */}
+          <div className="relative z-10 text-white flex  flex-col items-center justify-between ">
+            <h2 className="text-6xl font-bold mb-6">Electronics E-Commerce</h2>
+            <button
+            onMouseEnter={()=>setBtnHovered(true)}
+            onMouseLeave={()=>setBtnHovered(false)}
+            className="bg-white text-black px-6 py-3 rounded-xl font-bold hover:bg-black hover:text-white transition-all">
+              Try it out
+            </button>
+          </div>
         </div>
-         </div>
       </div>
-      
-        <div className="sticky top-28">
-        <div className="border hover:bg-black hover:text-white transition-all border-black items-center px-3 rounded-t-2xl bg-white w-full h-8 flex justify-between font-bold">
+
+      <div className="sticky top-28">
+        <div className={`${darkMode ? "bg-black text-white  hover:bg-white hover:text-black" : "bg-white text-black  hover:bg-black hover:text-white"} border transition-all border-black items-center px-3 rounded-t-2xl w-full h-8 flex justify-between font-bold`}>
           <p>
             NEGM's Portfolio
           </p>
@@ -134,98 +145,101 @@ useEffect(() => {
             Porftolio
           </p>
           <p>
-           <MdArrowOutward />
+            <MdArrowOutward />
           </p>
         </div>
-      <div className="flex justify-between top-25 text-black h-[95vh] bg-white  ">
-        <div className=" flex flex-col justify-between items-center w-[40%]">
-          <h2 className="text-6xl">Electronics E-Commerce</h2>
-          <p className="text-3xl hover:underline my-20">Try it out</p>
-        </div>
-        <div className="h-full flex items-center hover:opacity-50 transition-all duration-500">
+          <div className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-white">
+          {/* Background image that fills the entire card */}
           <Image
-            width={1000}
-            height={1200}
             src="/project-2.png"
             alt="e-commerce"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            fill  // Next.js shortcut for full width + height
+            className={`${btnHoverd?"opacity-100":"opacity-50"} transition-all duration-300 object-cover`} // covers area + slightly faded
           />
+
+          {/* Overlay text and content */}
+          <div className="relative z-10  flex  flex-col items-center justify-between">
+            <h2 className="text-6xl font-bold mb-6">NEGM's Portfolio</h2>
+            <button
+            onMouseEnter={()=>setBtnHovered(true)}
+            onMouseLeave={()=>setBtnHovered(false)}
+            className="bg-white text-black px-6 py-3 rounded-xl font-bold hover:bg-black hover:text-white transition-all">
+              Try it out
+            </button>
+          </div>
         </div>
-      </div>
       </div>
 
       <div className="sticky top-33">
-         <div className="border hover:bg-black hover:text-white transition-all border-black items-center px-3 rounded-t-2xl bg-white w-full h-8 flex justify-between font-bold">
+        <div className={`${darkMode ? "bg-black text-white  hover:bg-white hover:text-black" : "bg-white text-black  hover:bg-black hover:text-white"} border transition-all border-black items-center px-3 rounded-t-2xl w-full h-8 flex justify-between font-bold`}>
           <p>
             NEGM's Portfolio
           </p>
           <p >
-           Porftolio
+            Porftolio
           </p>
           <p>
-           <MdArrowOutward />
+            <MdArrowOutward />
           </p>
         </div>
 
-      <div className="flex justify-between text-white h-[85vh] bg-black sticky top-40">
-        <div className=" flex flex-col justify-between items-center w-[40%]">
-          <p className=" ml-50  w-full h-10 font-bold flex justify-center items-center">
-            - Fashion Market Using MEAN -
-          </p>
-          <h2 className="text-6xl">Fashion Market</h2>
-          <p className="text-3xl  my-20">
-            Angular - Node - Express - MongoDB - TailwindCSS
-          </p>
-        </div>
-        <div className="h-full flex items-center hover:opacity-50 transition-all duration-500">
+         <div className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-white">
+          {/* Background image that fills the entire card */}
           <Image
-            width={1000}
-            height={1200}
             src="/project-3.png"
             alt="e-commerce"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            fill  // Next.js shortcut for full width + height
+            className={`${btnHoverd?"opacity-100":"opacity-50"} transition-all duration-300 object-cover`} // covers area + slightly faded
           />
+
+          {/* Overlay text and content */}
+          <div className="relative z-10  flex  flex-col items-center justify-between">
+            <h2 className="text-6xl font-bold mb-6">Fashion Market</h2>
+            <button
+            onMouseEnter={()=>setBtnHovered(true)}
+            onMouseLeave={()=>setBtnHovered(false)}
+            className="bg-white text-black px-6 py-3 rounded-xl font-bold hover:bg-black hover:text-white transition-all">
+              Try it out
+            </button>
+          </div>
         </div>
-      </div>
       </div>
       <div className="h-[150vh]">
-      <div className="sticky top-38">
-          <div className="border hover:bg-black hover:text-white transition-all border-black items-center px-3 rounded-t-2xl bg-white w-full h-8 flex justify-between font-bold">
-          <p>
-            NEGM's Portfolio
-          </p>
-          <p >
-           Porftolio
-          </p>
-          <p>
-           <MdArrowOutward />
-          </p>
-        </div>
-      <div
-        ref={lastProjectRef}
-        className={`flex justify-between text-black h-[85vh] bg-[#EDE8D0] sticky top-50 transition-all duration-700`}
-      >
-        <div className=" flex flex-col justify-between items-center w-[40%]">
-          <p className=" ml-50 w-full h-10 font-bold flex justify-center items-center">
-            - E-Commerce -
-          </p>
-          <h2 className="text-6xl">Electronics E-Commerce</h2>
-          <p className="text-3xl hover:underline my-20">Try it out</p>
-        </div>
-        <div className="h-full flex items-center hover:opacity-50 transition-all duration-500">
+        <div className="sticky top-38">
+          <div className={`${darkMode ? "bg-black text-white  hover:bg-white hover:text-black" : "bg-white text-black  hover:bg-black hover:text-white"} border transition-all border-black items-center px-3 rounded-t-2xl w-full h-8 flex justify-between font-bold`}>
+            <p>
+              NEGM's Portfolio
+            </p>
+            <p >
+              Porftolio
+            </p>
+            <p>
+              <MdArrowOutward />
+            </p>
+          </div>
+    
+           
+           <div  ref={lastProjectRef} className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-white">
+          {/* Background image that fills the entire card */}
           <Image
-            width={1000}
-            height={1200}
             src="/project-2.png"
             alt="e-commerce"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            fill  // Next.js shortcut for full width + height
+            className={`${btnHoverd?"opacity-100":"opacity-50"} transition-all duration-300 object-cover`} // covers area + slightly faded
           />
+
+          {/* Overlay text and content */}
+          <div className="relative z-10  flex  flex-col items-center justify-between">
+            <h2 className="text-6xl font-bold mb-6">NEGM's Portfolio</h2>
+            <button
+            onMouseEnter={()=>setBtnHovered(true)}
+            onMouseLeave={()=>setBtnHovered(false)}
+            className="bg-white text-black px-6 py-3 rounded-xl font-bold hover:bg-black hover:text-white transition-all">
+              Try it out
+            </button>
+          </div>
         </div>
-      </div>
-      </div>
+        </div>
       </div>
     </div>
   );

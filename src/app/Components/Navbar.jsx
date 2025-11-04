@@ -12,12 +12,12 @@ export default function Navbar() {
   const { darkMode } = useDarkMode();
   return (
     <div className={`fixed top-0 w-full z-50 ${darkMode?"bg-transparent":"bg-white"}`}>
-      <div className={`${darkMode?"":""} hover:bg-[#EDE8D0] transition-all duration-500 `} >
+      <div className={`${darkMode?"":""}  transition-all duration-500 `} >
         <nav className="flex justify-between mx-20">
-          <Link href={"#hero"}>
+          <Link href={"/"}>
             <h1
             
-              className={` ${darkMode?"text-white":"text-black"} text-3xl my-7 font-bold hover:text-white  rounded-full transition-all duration-500`}
+              className={` ${darkMode?"text-white":"text-black"} text-3xl my-7 font-bold rounded-full transition-all duration-500`}
             >
               NEGM
             </h1>
@@ -107,8 +107,8 @@ export default function Navbar() {
                   </div>
                 </div>
               </div>
-              <div className="my-5">
-                <div className="flex justify-center">
+              
+                <div className="flex justify-center my-5">
                   <Link href={"#contactUs"}>
                   <button className="mt-20 group p-5 cursor-pointer relative  text-6xl font-normal border-0 flex items-center justify-centerbg-transparent text-black h-30 w-150  overflow-hidden  transition-all duration-400">
                     <span className="group-hover:w-full absolute  left-0  h-full   w-5  border-y border-l-2 border-black transition-all duration-500"></span>
@@ -128,7 +128,7 @@ export default function Navbar() {
                   </button>
                   </Link>
                 </div>
-              </div>
+              
             </div>
           </ul>
         </nav>

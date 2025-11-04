@@ -1,17 +1,17 @@
 'use client'
 import React from "react";
 import TextPressure from "../Components/TextPressure";
-import CurvedLoop from "../Components/CurvedLoop";
 import Magnet from "../Components/Magnet";
-import {  useDarkMode } from "../context/DarkModeContext";
+import { useDarkMode } from "../context/DarkModeContext";
 import Link from "next/link";
+import CircularText from "../Components/CricularText";
 
 export default function Hero() {
   const { darkMode } = useDarkMode();
   return (
-    
+
     <div className="h-screen overflow-hidden">
-    
+
       <div className="grid grid-cols-3 my-30 h-[70%]">
         <div className="col-span-2 flex flex-col justify-between">
           <div className="flex flex-col justify-center mx-20">
@@ -34,29 +34,29 @@ export default function Hero() {
             <div className=" flex ">
               <Magnet padding={20} disabled={false} magnetStrength={1.7}>
                 <Link href={"#contactUs"}>
-                <h1
-                  className={`${darkMode?"hover:bg-white ":" text-black  border-[#EDE8D0] hover:bg-[#EDE8D0]"} hover:text-[#3e280f] text-3xl ml-5 mt-20 px-5 py-2 font-bold rounded-3xl border   transition-all duration-500`}
-                >
-                  Contact Me
-                </h1>
+                  <h1
+                    className={`${darkMode ? "hover:bg-white " : " text-black  border-[#EDE8D0] hover:bg-[#EDE8D0]"} hover:text-[#3e280f] text-3xl ml-5 mt-20 px-5 py-2 font-bold rounded-3xl border   transition-all duration-500`}
+                  >
+                    Contact Me
+                  </h1>
                 </Link>
               </Magnet>
             </div>
           </div>
-          {/* <div className="w-screen ">
-            <CurvedLoop
-              marqueeText="React Developer ✦ Software Engineer ✦"
-              speed={1.5}
-              curveAmount={180}
-              direction="right"
-              interactive={true}
-              className="custom-text-style"
-            />
-          </div> */}
+          <Link href={"#contactUs"}>
+          <div className="absolute bottom-40 right-40">
+          <CircularText
+            text="OPEN TO WORK | FULLSTACK | "
+            onHover="pause"
+            spinDuration={20}
+            className="custom-class"
+          />
+          </div>
+          </Link>
         </div>
       </div>
-      
+
     </div>
- 
+
   );
 }
