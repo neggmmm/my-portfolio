@@ -17,7 +17,7 @@ export default function ContactUs() {
            
             <div className="flex justify-around flex-col px-20 py-10 bg-[#111] text-[#EDE8D0] sticky top-0 h-[100vh] z-60">
                 
-                <div className="flex w-full justify-between items-end">
+                <div className="flex flex-col lg:flex-row  w-full justify-between items-end">
                     <div className="mb-30">
                         <BlurText
                         text="Let's Get Inspired Together!"
@@ -34,9 +34,9 @@ export default function ContactUs() {
                         className="text-3xl"
                     />
                     </div>
-                    <div className="flex flex-col w-[40%] text-white z-30">
+                    <div className="flex flex-col xl:w-[40%] w-full text-white z-30">
                         {/* Name */}
-
+                        <form>
                         <div className="flex flex-col ">
                             <label
                                 className={`${userNameFocused || clientData.name ? "translate-y-0 text-[#e9d6d6] font-bold" : "translate-y-9"} transition-all duration-500 text-[#aaa] focus:text-[#EDE8D0]`} htmlFor="name">
@@ -79,6 +79,7 @@ export default function ContactUs() {
                         <div className="bg-white duration-300 text-black py-2 hover:bg-[#EDE8D0] my-5 transition-all">
                             <button className="px-2  text-center w-full ">Send Your Message!</button>
                         </div>
+                        </form>
                     </div>
                 </div>
                 <div className="flex flex-col justify-center items-center">
