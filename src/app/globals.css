@@ -127,6 +127,24 @@
 
 .text-9xl {
   font-size: 30rem;
+    @media (max-width: 1700px ){
+    font-size: 25rem;
+  }
+    @media (max-width: 1450px ){
+    font-size: 20rem;
+  }
+    @media (max-width: 1150px ){
+    font-size: 15rem;
+  }
+  @media (max-width: 920px ){
+    font-size: 10rem;
+  }
+    @media (max-width: 720px ){
+    font-size: 9rem;
+  }
+  @media (max-width: 600px ){
+    font-size: 6rem;
+  }
 }
 @layer base {
   * {

@@ -40,7 +40,7 @@ export default function Navbar() {
             <div className={` translate-y-11 h-[2px] w-7 bg-black`} ></div> */}
           </div>
           <ul
-            className={` fixed right-0 top-0 w-[35%] h-full duration-500 bg-white ${
+            className={` fixed right-0 top-0 w-full md:w-[50%] xl:w-[35%] h-full duration-500 bg-white ${
               menuOpen ? "translate-x-0" : "translate-x-full"
             }`}
           >
@@ -114,8 +114,8 @@ export default function Navbar() {
               
                 <div className="flex justify-center my-5">
                   <Link href={"#contactUs"}>
-                  <button className="mt-20 group p-5 cursor-pointer relative  text-6xl font-normal border-0 flex items-center justify-centerbg-transparent text-black h-30 w-150  overflow-hidden  transition-all duration-400">
-                    <span className="group-hover:w-full absolute  left-0  h-full   w-5  border-y border-l-2 border-black transition-all duration-500"></span>
+                  <button className="h-20 w-110 p-5 text-5xl md:mt-10 md:h-15 md:w-90 md:p-2 md:text-3xl xl:mt-20 xl:h-25 xl:w-110 xl:p-4 xl:text-5xl  2xl:mt-20 2xl:h-30 2xl:w-130 2xl:p-5 2xl:text-6xl group  cursor-pointer relative  font-normal border-0 flex items-center justify-centerbg-transparent text-black overflow-hidden  transition-all duration-400">
+                    <span className="group-hover:w-full absolute  left-0  h-full w-5  border-y border-l-2 border-black transition-all duration-500"></span>
                     <div className="group-hover:opacity-0 flex justify-around absolute translate-x-0 transition-all duration-200">
                       <span>
                         <HiArrowTurnDownRight />
