@@ -10,7 +10,7 @@ export default function Hero() {
   const { darkMode } = useDarkMode();
   return (
 
-    <div className="h-screen overflow-hidden">
+    <div id="hero" className="h-screen overflow-hidden">
 
       <div className="grid grid-cols-3 my-30 h-[70%]">
         <div className="col-span-2 flex flex-col justify-between">
@@ -31,27 +31,22 @@ export default function Hero() {
                 <span>Software Engineer </span>|<span> Web Developer</span>
               </div>
             </div>
-            <div className=" flex ">
-              <Magnet padding={20} disabled={false} magnetStrength={1.7}>
-                <Link href={"#contactUs"}>
-                  <h1
-                    className={`${darkMode ? "hover:bg-white " : " text-black  border-[#EDE8D0] hover:bg-[#EDE8D0]"} hover:text-[#3e280f] text-3xl ml-5 mt-20 px-5 py-2 font-bold rounded-3xl border   transition-all duration-500`}
-                  >
-                    Contact Me
-                  </h1>
-                </Link>
-              </Magnet>
+          </div>
+          <Link
+            href="#"
+            onClick={(e) => {
+              e.preventDefault(); // stop URL change
+              document.querySelector("#contactUs")?.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            <div className="absolute bottom-40 right-40">
+              <CircularText
+                text="OPEN TO WORK | FULLSTACK | "
+                onHover="pause"
+                spinDuration={20}
+                className="custom-class monoton-regular"
+              />
             </div>
-          </div>
-          <Link href={"#contactUs"}>
-          <div className="absolute bottom-40 right-40">
-          <CircularText
-            text="OPEN TO WORK | FULLSTACK | "
-            onHover="pause"
-            spinDuration={20}
-            className="custom-class monoton-regular"
-          />
-          </div>
           </Link>
         </div>
       </div>

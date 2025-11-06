@@ -101,6 +101,7 @@ export default function Projects() {
         zIndex: 0
       }}
       className="transition-transform duration-400"
+      id="projects"
     >
 
       <div className="sticky top-23">

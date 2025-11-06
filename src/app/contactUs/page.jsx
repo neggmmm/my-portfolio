@@ -141,7 +141,7 @@ export default function ContactUs() {
                 </div>
                 </div>
                 <div className="absolute top-20 left-20 opacity-20 z-20 select-none">
-                    <div className="hidden lg:block">
+                    <div className="hidden xl:block">
                      <BlurText
                         text="N E G M"
                         delay={550}
@@ -152,8 +152,6 @@ export default function ContactUs() {
                     </div>
                 </div>
             </div>
-
-
         </div>
     );
 }

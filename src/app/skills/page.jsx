@@ -2,7 +2,7 @@ import React from "react";
 import ScrollReveal from "../Components/ScrollReveal";
 
 export default function Skills() {
-  return <div className="mx-20 overflow-hidden select-none z-21 text-9xl notable-regular">
+  return <div id="skills" className="mx-20 overflow-hidden select-none z-21 text-9xl notable-regular">
    
     <ScrollReveal
   baseOpacity={20}
