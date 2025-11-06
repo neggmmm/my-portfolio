@@ -4,7 +4,8 @@ import Image from "next/image";
 import { MdArrowOutward } from "react-icons/md";
 import { useDarkMode } from "../context/DarkModeContext";
 import Link from "next/link";
-
+import { HoverBorderGradient } from "../Components/hover-border-gradient";
+import BlurText from "../Components/BlurText";
 
 export default function Projects() {
   const [isHovered, setIsHovered] = useState(false);
@@ -123,18 +124,27 @@ export default function Projects() {
             src="/project-1.png"
             alt="e-commerce"
             fill  // Next.js shortcut for full width + height
-            className={`${btnHoverd?"opacity-100":"opacity-80"} transition-all duration-300 object-cover`} // covers area + slightly faded
+            className={`${btnHoverd?"opacity-60":"opacity-100"} transition-all duration-300 object-cover`} // covers area + slightly faded
           />
 
           {/* Overlay text and content */}
-          <div className="relative z-10 text-white flex  flex-col items-center justify-between ">
-            <h2 className="text-6xl font-bold mb-6">Electronics E-Commerce</h2>
-            <button
-            onMouseEnter={()=>setBtnHovered(true)}
+          <div className="relative z-10 top-40 flex flex-col items-center justify-between ">
+           <BlurText
+                        text="Electronics E Commerce"
+                        delay={50}
+                        animateBy="words"
+                        direction="bottom"
+                        className="text-4xl tracking-tighter "
+                    />
+            <HoverBorderGradient duration={0.5} 
+            
+
+             onMouseEnter={()=>setBtnHovered(true)}
             onMouseLeave={()=>setBtnHovered(false)}
-            className="bg-white text-black px-6 py-3 rounded-xl font-bold hover:bg-black hover:text-white transition-all">
-              Try it out
-            </button>
+            >
+                Try it out
+            </HoverBorderGradient>
+        
           </div>
         </div>
       </div>

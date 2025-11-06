@@ -1,4 +1,4 @@
-'use client'
+"use client"
 import React, { useState } from "react";
 import { useDarkMode } from "../context/DarkModeContext";
 import BlurText from "../Components/BlurText";
@@ -12,40 +12,76 @@ export default function ContactUs() {
     const [phoneNumberFocused, setPhoneNumberFocused] = useState(false)
     const [messageFocused, setMessageFocused] = useState(false)
     const [clientData, setClientData] = useState({ name: "", email: "", phoneNumber: "", message: "" })
+    const [sending, setSending] = useState(false)
+    const [statusMessage, setStatusMessage] = useState("")
+    const [sentName, setSentName] = useState("")
     return (
         <div id="contactUs">
            
             <div className="flex justify-around flex-col px-20 py-10 bg-[#111] text-[#EDE8D0] sticky top-0 h-[100vh] z-60">
                 
-                <div className="flex flex-col lg:flex-row  w-full justify-between items-end">
-                    <div className="mb-30">
+                <div className="flex flex-col xl:flex-row  w-full justify-between items-end">
+                    <div className="mb-30 flex flex-col  items-center xl:items-start">
                         <BlurText
                         text="Let's Get Inspired Together!"
                         delay={150}
                         animateBy="words"
                         direction="top"
-                        className="text-6xl"
+                        className="text-xl font-bold md:text-5xl lg:text-6xl"
                     />
                        <BlurText
                         text="Send Your message"
                         delay={150}
                         animateBy="words"
                         direction="bottom"
-                        className="text-3xl"
+                        className="text-xl md:text-4xl lg:text:text-5xl"
                     />
                     </div>
                     <div className="flex flex-col xl:w-[40%] w-full text-white z-30">
                         {/* Name */}
-                        <form>
+                        <form onSubmit={async (e) => {
+                            e.preventDefault();
+                            setSending(true);
+                            setStatusMessage("");
+                            try {
+                                const res = await fetch('/api/contact', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify(clientData),
+                                });
+
+                                if (res.status === 501) {
+                                    // SMTP not configured on server — offer mail client fallback
+                                    setStatusMessage('SMTP not configured on the server. Opening your mail client as a fallback...');
+                                    const subject = encodeURIComponent(clientData.name || 'New message');
+                                    const body = encodeURIComponent((clientData.message || '') + "\n\nPhone: " + (clientData.phoneNumber || 'N/A'));
+                                    window.location.href = `mailto:abdalkareemnegm@gmail.com?subject=${subject}&body=${body}`;
+                                    setSending(false);
+                                    return;
+                                }
+
+                                const data = await res.json();
+                                if (res.ok && data.ok) {
+                                    setStatusMessage('Message sent successfully!');
+                                    setSentName(clientData.name || '');
+                                    setClientData({ name: "", email: "", phoneNumber: "", message: "" });
+                                } else {
+                                    setStatusMessage(data?.error || 'Failed to send message');
+                                }
+                            } catch (err) {
+                                setStatusMessage('Unexpected error: ' + err.message);
+                            } finally {
+                                setSending(false);
+                            }
+                        }}>
                         <div className="flex flex-col ">
                             <label
                                 className={`${userNameFocused || clientData.name ? "translate-y-0 text-[#e9d6d6] font-bold" : "translate-y-9"} transition-all duration-500 text-[#aaa] focus:text-[#EDE8D0]`} htmlFor="name">
                                 Name
                             </label>
-                            {console.log(clientData.name)}
-                            <input onFocus={() => setUserNameFocused(true)} onBlur={() => setUserNameFocused(false)}
-                                value={clientData.name} onChange={(e) => setClientData({ ...clientData, name: e.target.value })} id="name"
-                                className="bg-transparent border-b-4 border-[#e9d6d6] py-2 focus:outline-none" />
+                                <input onFocus={() => setUserNameFocused(true)} onBlur={() => setUserNameFocused(false)}
+                                    value={clientData.name} onChange={(e) => setClientData({ ...clientData, name: e.target.value })} id="name"
+                                    className="bg-transparent border-b-4 border-[#e9d6d6] py-2 focus:outline-none" />
                         </div>
 
                         {/* email and phone number */}
@@ -77,9 +113,14 @@ export default function ContactUs() {
                                 id="message" className="bg-transparent border-b-4 border-[#e9d6d6] py-2 focus:outline-none"></textarea>
                         </div>
                         <div className="bg-white duration-300 text-black py-2 hover:bg-[#EDE8D0] my-5 transition-all">
-                            <button className="px-2  text-center w-full ">Send Your Message!</button>
+                            <button disabled={sending} type="submit" className="px-2  text-center w-full ">{sending ? 'Sending...' : 'Send Your Message!'}</button>
                         </div>
+
                         </form>
+
+                        {/* status / success */}
+                        {statusMessage ? <p className="mt-2 text-sm text-[#e9d6d6]">{statusMessage}</p> : null}
+                        {sentName ? <h3 className="mt-4 text-3xl">{sentName}</h3> : null}
                     </div>
                 </div>
                 <div className="flex flex-col justify-center items-center">
@@ -88,18 +129,19 @@ export default function ContactUs() {
                         delay={350}
                         animateBy="words"
                         direction="top"
-                        className="text-3xl"
+                        className="text-4xl font-bold md:text-5xl lg:text-6xl"
                     />
-                <div className="flex justify-center">
-                    <Link href={"https://github.com/neggmmm"} target="_blank"  className="text-3xl hover:translate-y-1 hover:text-[#50107a]/60 transition-all text-[#EDE8D0] mx-5">
+                <div className="mt-10 flex justify-center">
+                    <Link href={"https://github.com/neggmmm"} target="_blank"  className="text-5xl hover:translate-y-1 hover:text-[#50107a]/60 transition-all text-[#EDE8D0] mx-5">
                     <VscGithub />
                     </Link>
-                    <Link href={"https://www.linkedin.com/in/neggmmm/"} target="_blank" className="text-3xl hover:translate-y-1 transition-all hover:text-[#1a08be]/80 text-[#EDE8D0] mx-5">
+                    <Link href={"https://www.linkedin.com/in/neggmmm/"} target="_blank" className="text-5xl hover:translate-y-1 transition-all hover:text-[#1a08be]/80 text-[#EDE8D0] mx-5">
                     <PiLinkedinLogoBold />
                     </Link>
                 </div>
                 </div>
                 <div className="absolute top-20 left-20 opacity-20 z-20 select-none">
+                    <div className="hidden lg:block">
                      <BlurText
                         text="N E G M"
                         delay={550}
@@ -107,6 +149,7 @@ export default function ContactUs() {
                         direction="top"
                         className="text-9xl tracking-tighter "
                     />
+                    </div>
                 </div>
             </div>
 
