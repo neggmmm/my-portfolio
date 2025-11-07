@@ -28,7 +28,7 @@ export default function Navbar() {
     >
       {/* top bar */}
       <div className={`
-        absolute left-1/2 -translate-x-1/2 w-7 h-[2px] origin-center  duration-300 transition-transform
+        absolute left-1/2 -translate-x-1/2 w-12 h-[2px] origin-center  duration-300 transition-transform
         ${darkMode ? "bg-white" : "bg-black"}
         ${menuOpen 
           ? "top-1/2 -translate-y-1/3 rotate-45 "
@@ -37,7 +37,7 @@ export default function Navbar() {
       `}/>
       {/* bottom bar */}
       <div className={`
-        absolute left-1/2 -translate-x-1/2 w-7 h-[2px] origin-center duration-300 transition-transform
+        absolute left-1/2 -translate-x-1/2 w-12 h-[2px] origin-center duration-300 transition-transform
         ${darkMode ? "bg-white" : "bg-black"}
         ${menuOpen 
           ? "top-1/2 -translate-y-1/3 -rotate-45"
