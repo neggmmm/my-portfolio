@@ -1,13 +1,16 @@
 'use client'
-import React from "react";
+import React, { useState } from "react";
 import TextPressure from "../Components/TextPressure";
 import Magnet from "../Components/Magnet";
 import { useDarkMode } from "../context/DarkModeContext";
 import Link from "next/link";
 import CircularText from "../Components/CricularText";
+import { hover } from "motion";
 
 export default function Hero() {
   const { darkMode } = useDarkMode();
+  const [hoveredLinkedIn, setHoveredLinkedIn] = useState(false);
+  const [hoveredGitHub, setHoveredGitHub] = useState(false);
   return (
 
     <div id="hero" className="h-screen overflow-hidden">
@@ -31,12 +34,33 @@ export default function Hero() {
                 <span>Software Engineer </span>|<span> Web Developer</span>
               </div>
             </div>
+            <div className="flex">
+            <Link 
+            onMouseEnter={() => setHoveredLinkedIn(true)}
+            onMouseLeave={() => setHoveredLinkedIn(false)}
+            target="_blank"
+            href="https://linkedin.com/in/neggmmm">
+            <div className={`${hoveredGitHub?"bg-white text-black skew-x-0":"bg-black text-white"} mt-10 py-3 px-6   skew-x-24 hover:-skew-x-24 transition-all duration-300   z-20`}>
+              LINKEDIN
+            </div>
+            </Link>
+             <Link 
+             onMouseEnter={()=>setHoveredGitHub(true)}
+              onMouseLeave={()=>setHoveredGitHub(false)}
+              target="_blank"
+             href="https://github.com/neggmmm">
+            <div className={`${hoveredLinkedIn ?"bg-black text-white -skew-x-24":"bg-transparent text-black skew-x-0"} mt-10 py-3 px-6  hover:text-white hover:bg-black  hover:skew-x-24 transition-all duration-300`}>
+              GITHUB
+            </div>
+            
+            </Link>
+          </div>
           </div>
           <Link
             href="#"
             onClick={(e) => {
-              e.preventDefault(); // stop URL change
-              document.querySelector("#contactUs")?.scrollIntoView({ behavior: "smooth" });
+              e.preventDefault();
+              document.querySelector("#contactUs")?.scrollIntoView();
             }}
           >
             <div className="absolute bottom-40 right-40">
