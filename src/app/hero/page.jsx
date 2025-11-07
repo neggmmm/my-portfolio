@@ -40,7 +40,7 @@ export default function Hero() {
             onMouseLeave={() => setHoveredLinkedIn(false)}
             target="_blank"
             href="https://linkedin.com/in/neggmmm">
-            <div className={`${hoveredGitHub?"bg-white text-black skew-x-0":"bg-black text-white"} mt-10 py-3 px-6   skew-x-24 hover:-skew-x-24 transition-all duration-300   z-20`}>
+            <div className={`${hoveredGitHub?"bg-white text-black skew-x-0":"bg-black text-white"}  mt-10 py-2 px-6   skew-x-24 hover:-skew-x-24 transition-all duration-300   z-20`}>
               LINKEDIN
             </div>
             </Link>
@@ -49,7 +49,7 @@ export default function Hero() {
               onMouseLeave={()=>setHoveredGitHub(false)}
               target="_blank"
              href="https://github.com/neggmmm">
-            <div className={`${hoveredLinkedIn ?"bg-black text-white -skew-x-24":"bg-transparent text-black skew-x-0"} mt-10 py-3 px-6  hover:text-white hover:bg-black  hover:skew-x-24 transition-all duration-300`}>
+            <div className={` mt-10 py-2 px-6  hover:text-white hover:bg-black  hover:skew-x-24 transition-all duration-300`}>
               GITHUB
             </div>
             

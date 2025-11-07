@@ -22,32 +22,33 @@ export default function Navbar() {
               NEGM
             </h1>
           </Link>
-          <div
-            onClick={() => {
-              setMenuOpen(!menuOpen);
-              setIsClicked(!isClicked);
-            }}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            className={`transition-all duration-500 cursor-pointer   ${menuOpen ? "opacity-0" : "opacity-100"
-              }`}
-          >
-
-            <div className={`${darkMode ? "bg-white" : "bg-black"} translate-y-9 h-[2px] w-7 bg-black`} ></div>
-            <div className={`${darkMode ? "bg-white" : "bg-black"} translate-y-11 h-[2px] w-7 bg-black`} ></div>
-            {/* <div className={` translate-y-9 h-[2px] w-7 bg-black`} ></div>
-            <div className={` translate-y-11 h-[2px] w-7 bg-black`} ></div> */}
-          </div>
+           <div 
+      onClick={() => setMenuOpen(!menuOpen)} 
+      className="relative w-8 h-8 cursor-pointer z-60 mt-4"
+    >
+      {/* top bar */}
+      <div className={`
+        absolute left-1/2 -translate-x-1/2 w-7 h-[2px] origin-center  duration-300 transition-transform
+        ${darkMode ? "bg-white" : "bg-black"}
+        ${menuOpen 
+          ? "top-1/2 -translate-y-1/3 rotate-45 "
+          : "top-[calc(50%-8px)] translate-y-0 rotate-0"
+        }
+      `}/>
+      {/* bottom bar */}
+      <div className={`
+        absolute left-1/2 -translate-x-1/2 w-7 h-[2px] origin-center duration-300 transition-transform
+        ${darkMode ? "bg-white" : "bg-black"}
+        ${menuOpen 
+          ? "top-1/2 -translate-y-1/3 -rotate-45"
+          : "top-[calc(50%+8px)] translate-y-0 rotate-0"
+        }
+      `}/>
+    </div>
           <ul
             className={` fixed right-0 top-0 w-full md:w-[50%] xl:w-[35%] h-full duration-500 bg-white ${menuOpen ? "translate-x-0" : "translate-x-full"
               }`}
           >
-            <div
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="absolute text-3xl my-7 right-20 cursor-pointer"
-            >
-              X
-            </div>
             <div className=" flex flex-col h-full justify-between">
               <div>
                 <div className="mt-20">
