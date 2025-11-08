@@ -28,21 +28,21 @@ export default function Navbar() {
     >
       {/* top bar */}
       <div className={`
-        absolute left-1/2 -translate-x-1/2 w-12 h-[2px] origin-center  duration-300 transition-transform
-        ${darkMode ? "bg-white" : "bg-black"}
+        absolute left-1/2 -translate-x-1/2 w-12 h-[2px] origin-center  duration-300 transition-transform 
+       ${ menuOpen ? "bg-black" : darkMode ? "bg-white" : "bg-black"}
         ${menuOpen 
-          ? "top-1/2 -translate-y-1/3 rotate-45 "
+          ? "top-1/2 -translate-y-1/3 rotate-45 bg-black"
           : "top-[calc(50%-8px)] translate-y-0 rotate-0"
         }
       `}/>
       {/* bottom bar */}
       <div className={`
-        absolute left-1/2 -translate-x-1/2 w-12 h-[2px] origin-center duration-300 transition-transform
-        ${darkMode ? "bg-white" : "bg-black"}
+        absolute left-1/2 -translate-x-1/2 w-12 h-[2px] origin-center duration-300 transition-transform 
         ${menuOpen 
-          ? "top-1/2 -translate-y-1/3 -rotate-45"
+          ? "top-1/2 -translate-y-1/3 -rotate-45 bg-black"
           : "top-[calc(50%+8px)] translate-y-0 rotate-0"
         }
+        ${ menuOpen ? "bg-black" : darkMode ? "bg-white" : "bg-black"}
       `}/>
     </div>
           <ul

@@ -13,7 +13,7 @@ export default function Hero() {
   const [hoveredGitHub, setHoveredGitHub] = useState(false);
   return (
 
-    <div id="hero" className="h-screen overflow-hidden">
+    <div id="hero" className="h-screen overflow-hidden select-none">
 
       <div className="grid grid-cols-3 my-30 h-[70%]">
         <div className="col-span-2 flex flex-col justify-between">
