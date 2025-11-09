@@ -20,6 +20,7 @@ const ScrollReveal = ({
 }) => {
   const containerRef = useRef(null);
 
+  // Split title text into individual words
   const splitText = useMemo(() => {
     const text = typeof children === 'string' ? children : '';
     return text.split(/(\s+)/).map((word, index) => {
@@ -32,117 +33,135 @@ const ScrollReveal = ({
     });
   }, [children]);
 
-  const customized = useMemo(() => {
-    const text = typeof skills === 'string' ? skills : '';
-    return text.split(/(\s+)/).map((word, index) => {
-      if (word.match(/^\s+$/)) return word;
-      return (
-        <span className="inline-block word" key={index}>
-          {word}
-        </span>
-      );
-    });
-  }, [skills]);
-
-
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
 
-    const scroller = scrollContainerRef && scrollContainerRef.current ? scrollContainerRef.current : window;
+    const scroller = scrollContainerRef?.current || window;
 
-    gsap.fromTo(el, { transformOrigin: '0% 50%', rotate: baseRotation }, {
-      ease: 'none',
-      rotate: 0,
-      scrollTrigger: {
-        trigger: el,
-        scroller,
-        start: 'top bottom',
-        end: rotationEnd,
-        scrub: true
-      }
-    });
-
-    const wordElements = el.querySelectorAll('.word');
-
-    gsap.fromTo(wordElements, { opacity: baseOpacity, willChange: 'opacity' }, {
-      ease: 'none',
-      opacity: 1,
-      stagger: 0.05,
-      scrollTrigger: {
-        trigger: el,
-        scroller,
-        start: 'top bottom-=20%',
-        end: wordAnimationEnd,
-        scrub: true
-      }
-    });
-
+    // Rotate animation
     gsap.fromTo(
-      wordElements,
+      el,
+      { transformOrigin: '0% 50%', rotate: baseRotation },
       {
-        color: "#333", // starting color (black)
-      },
-      {
-        color: "#fff", // ending color (white)
-        ease: "power2.inOut",
-        stagger: 0.05, // small delay between words (optional)
+        rotate: 0,
+        ease: 'none',
         scrollTrigger: {
           trigger: el,
           scroller,
-          // when the top of element hits middle of viewport, start animation
-          start: "top bottom-=10%",
-          // when bottom of element leaves center, finish animation
-          end: "bottom center",
-          scrub: 1.5,
-        },
-      }
-    );
-
-    const customText = el.querySelector('.customized-text');
-
-    // 2️⃣ Create a GSAP animation for it
-    gsap.fromTo(
-      customText,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        scrollTrigger: {
-          trigger: el,
-          scroller,
-          start: "top 70%",  // roughly when 30% of element is visible
-          end: "top 50%",    // end when about 50% visible
+          start: 'top bottom',
+          end: rotationEnd,
           scrub: true,
         },
       }
     );
 
-    if (enableBlur) {
-      gsap.fromTo(wordElements, { filter: `blur(${blurStrength}px)` }, {
-        ease: 'none',
-        filter: 'blur(0px)',
+    const wordElements = el.querySelectorAll('.word');
+
+    // Fade-in text words
+    gsap.fromTo(
+      wordElements,
+      { opacity: baseOpacity },
+      {
+        opacity: 1,
         stagger: 0.05,
+        ease: 'none',
         scrollTrigger: {
           trigger: el,
           scroller,
           start: 'top bottom-=20%',
           end: wordAnimationEnd,
-          scrub: true
+          scrub: true,
+        },
+      }
+    );
+
+    // Word color transition
+    gsap.fromTo(
+      wordElements,
+      { color: '#333' },
+      {
+        color: '#fff',
+        ease: 'power2.inOut',
+        stagger: 0.05,
+        scrollTrigger: {
+          trigger: el,
+          scroller,
+          start: 'top bottom-=10%',
+          end: 'bottom center',
+          scrub: 1.5,
+        },
+      }
+    );
+
+    // Blur effect (optional)
+    if (enableBlur) {
+      gsap.fromTo(
+        wordElements,
+        { filter: `blur(${blurStrength}px)` },
+        {
+          filter: 'blur(0px)',
+          stagger: 0.05,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: el,
+            scroller,
+            start: 'top bottom-=20%',
+            end: wordAnimationEnd,
+            scrub: true,
+          },
         }
-      });
+      );
     }
 
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    // ✨ Handle centralized customized skill text
+    // This updates the fixed overlay as user scrolls into each skill section
+    ScrollTrigger.create({
+      trigger: el,
+      scroller,
+      start: 'top center',
+      end: 'bottom center',
+      onEnter: () => showSkill(skills),
+      onEnterBack: () => showSkill(skills),
+      onLeave: () => hideSkill(),
+      onLeaveBack: () => hideSkill(),
+    });
+
+    // Helper functions for overlay animation
+    const showSkill = (text) => {
+      const overlay = document.querySelector('#customized-overlay');
+      if (overlay) {
+        overlay.textContent = text;
+        gsap.to(overlay, { opacity: 1, duration: 0.6, y: 0 });
+      }
     };
-  }, [scrollContainerRef, enableBlur, baseRotation, baseOpacity, rotationEnd, wordAnimationEnd, blurStrength]);
+
+    const hideSkill = () => {
+      const overlay = document.querySelector('#customized-overlay');
+      if (overlay) {
+        gsap.to(overlay, { opacity: 0, duration: 0.6, y: -20 });
+      }
+    };
+
+    return () => ScrollTrigger.getAll().forEach((t) => t.kill());
+  }, [
+    scrollContainerRef,
+    enableBlur,
+    baseRotation,
+    baseOpacity,
+    rotationEnd,
+    wordAnimationEnd,
+    blurStrength,
+    skills,
+  ]);
 
   return (
-    <div ref={containerRef} className={`my-5 ${containerClassName} flex items-center justify-between`}>
+    <div ref={containerRef} className={`my-5 ${containerClassName}`}>
       <p
-        className={`text-[clamp(9.6rem,4vw,3rem)] leading-[1.5] font-bold text-6xl ${textClassName}`}>{splitText}</p>
-      <p className='text-2xl customized-text'>{customized}</p>
+        className={`text-[clamp(2.6rem,5vw,7rem)] md:text-text-[clamp(4.6rem,5vw,7rem)] lg:text-[clamp(6.6rem,5vw,7rem)] 2xl:text-[clamp(9.6rem,4vw,3rem)] leading-[1.5] font-bold  ${textClassName}`}
+      >
+        {splitText}
+      </p>
     </div>
   );
 };
