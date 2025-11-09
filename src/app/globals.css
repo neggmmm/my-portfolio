@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Notable&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap');
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -90,6 +92,17 @@
   font-style: normal;
 }
 
+.goldman-regular {
+  font-family: "Goldman", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.goldman-bold {
+  font-family: "Goldman", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
 
 .dark {
   --background: oklch(0.145 0 0);

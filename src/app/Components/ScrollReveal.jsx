@@ -7,6 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ScrollReveal = ({
   children,
+  skills,
   scrollContainerRef,
   enableBlur = true,
   baseOpacity = 0.1,
@@ -30,6 +31,19 @@ const ScrollReveal = ({
       );
     });
   }, [children]);
+
+  const customized = useMemo(() => {
+    const text = typeof skills === 'string' ? skills : '';
+    return text.split(/(\s+)/).map((word, index) => {
+      if (word.match(/^\s+$/)) return word;
+      return (
+        <span className="inline-block word" key={index}>
+          {word}
+        </span>
+      );
+    });
+  }, [skills]);
+
 
   useEffect(() => {
     const el = containerRef.current;
@@ -85,6 +99,25 @@ const ScrollReveal = ({
       }
     );
 
+    const customText = el.querySelector('.customized-text');
+
+    // 2️⃣ Create a GSAP animation for it
+    gsap.fromTo(
+      customText,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        scrollTrigger: {
+          trigger: el,
+          scroller,
+          start: "top 70%",  // roughly when 30% of element is visible
+          end: "top 50%",    // end when about 50% visible
+          scrub: true,
+        },
+      }
+    );
+
     if (enableBlur) {
       gsap.fromTo(wordElements, { filter: `blur(${blurStrength}px)` }, {
         ease: 'none',
@@ -106,10 +139,11 @@ const ScrollReveal = ({
   }, [scrollContainerRef, enableBlur, baseRotation, baseOpacity, rotationEnd, wordAnimationEnd, blurStrength]);
 
   return (
-    <h2 ref={containerRef} className={`my-5 ${containerClassName}`}>
+    <div ref={containerRef} className={`my-5 ${containerClassName} flex items-center justify-between`}>
       <p
         className={`text-[clamp(9.6rem,4vw,3rem)] leading-[1.5] font-bold text-6xl ${textClassName}`}>{splitText}</p>
-    </h2>
+      <p className='text-2xl customized-text'>{customized}</p>
+    </div>
   );
 };
 
