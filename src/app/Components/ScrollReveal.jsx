@@ -15,8 +15,8 @@ const ScrollReveal = ({
   blurStrength = 4,
   containerClassName = '',
   textClassName = '',
-  rotationEnd = 'bottom bottom',
-  wordAnimationEnd = 'bottom bottom'
+  rotationEnd = 'bottom bottom-=10%',
+  wordAnimationEnd = 'bottom bottom '
 }) => {
   const containerRef = useRef(null);
 
@@ -125,7 +125,7 @@ const ScrollReveal = ({
     const hideSkill = () => {
       const overlay = document.querySelector('#customized-overlay');
       if (overlay) {
-        gsap.to(overlay, { opacity: 0, duration: 0.6, y: -40,delay: 0.2});
+        gsap.to(overlay, { opacity: 0, duration: 0.5, y: -30});
       }
     };
     // ✨ Handle centralized customized skill text
