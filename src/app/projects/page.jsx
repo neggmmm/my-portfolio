@@ -16,6 +16,10 @@ export default function Projects() {
   const [scale, setScale] = useState(1);
   const { setDarkMode, darkMode } = useDarkMode();
   const [btnHoverd, setBtnHovered] = useState(false);
+  const [hoveredProject1, setHoveredProject1] = useState(null);
+  const [hoveredProject2, setHoveredProject2] = useState(null);
+  const [hoveredProject3, setHoveredProject3] = useState(null);
+  const [hoveredProject4, setHoveredProject4] = useState(null);
   useEffect(() => {
     let ticking = false; // prevents spamming scroll updates
 
@@ -100,24 +104,103 @@ export default function Projects() {
         transition: "transform 0.1s ease-out",
         zIndex: 0
       }}
-      className="transition-transform duration-400"
+      className="transition-transform duration-400 select-none"
       id="projects"
     >
 
-      <div className="sticky top-23">
+      <div
+        onMouseEnter={() => setHoveredProject1(true)}
+        onMouseLeave={() => setHoveredProject1(false)}
+        className="sticky top-23">
         <Link target="_blank" href="https://e-commerce-mern-beige.vercel.app/">
-        <div
-          className={`${darkMode ? "bg-black text-white  hover:bg-white hover:text-black" : "bg-white text-black  hover:bg-black hover:text-white"}  border transition-all border-black items-center px-3 rounded-t-2xl w-full h-8 flex justify-between font-bold`}>
-          <p>
-            X Market
-          </p>
-          <p >
-            E-Commerce
-          </p>
-          <p>
-            <MdArrowOutward />
-          </p>
+          <div
+            className={`${hoveredProject1 ? "bg-black text-white " : "bg-white text-black"} space-mono-bold  border transition-all border-[#999] items-center px-3  w-full h-8 flex justify-between font-bold`}>
+            <p>
+              X Market
+            </p>
+            <p >
+              E-Commerce
+            </p>
+            <p>
+              <MdArrowOutward />
+            </p>
+          </div>
+
+          <div className="relative h-[100vh] flex items-end overflow-hidden">
+            {/* Background image that fills the entire card */}
+            <Image
+              src="/project-1.png"
+              alt="e-commerce"
+              fill  // Next.js shortcut for full width + height
+              className={`${btnHoverd ? "opacity-60" : "opacity-100"} transition-all duration-300 object-cover`} // covers area + slightly faded
+            />
+
+            {/* Overlay text and content */}
+            <div className="absolute text-[#fbfafa] goldman-regular z-10 top-50  w-[30%] right-20">
+              An e-commerce platform built with React, Node.js, and MongoDB, featuring user authentication, product management, shopping cart functionality, and secure payment integration.
+            </div>
+          </div>
+        </Link>
+      </div>
+
+      <div
+        onMouseEnter={() => setHoveredProject2(true)}
+        onMouseLeave={() => setHoveredProject2(false)}
+        className="sticky top-28">
+        <Link target="_blank" href="https://e-commerce-mern-beige.vercel.app/">
+          <div className={`${hoveredProject2 ? "bg-black text-white" : "bg-white text-black "} space-mono-bold border transition-all border-[#999] items-center px-3  w-full h-8 flex justify-between font-bold`}>
+            <p>
+              Fashion Market
+            </p>
+            <p >
+              Angular E-Commerce
+            </p>
+            <p>
+              <MdArrowOutward />
+            </p>
+          </div>
+        
+        <div className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-white">
+          {/* Background image that fills the entire card */}
+          <Image
+            src="/project-3.png"
+            alt="e-commerce"
+            fill  // Next.js shortcut for full width + height
+            className={`${btnHoverd ? "opacity-100" : "opacity-50"} transition-all duration-300 object-cover`} // covers area + slightly faded
+          />
+
+          {/* Overlay text and content */}
+          <div className="relative z-10  flex  flex-col items-center justify-between">
+            <h2 className="text-6xl font-bold mb-6">NEGM's Portfolio</h2>
+            <button
+              onMouseEnter={() => setBtnHovered(true)}
+              onMouseLeave={() => setBtnHovered(false)}
+              className="bg-white text-black px-6 py-3 rounded-xl font-bold hover:bg-black hover:text-white transition-all">
+              Try it out
+            </button>
+          </div>
         </div>
+        </Link>
+      </div>
+
+      <div
+        onMouseEnter={() => setHoveredProject3(true)}
+        onMouseLeave={() => setHoveredProject3(false)}
+        className="sticky top-33">
+
+        <Link target="_blank" href="https://e-commerce-mern-beige.vercel.app/">
+          <div className={`${hoveredProject3 ? "bg-black text-white " : "bg-white text-black "} space-mono-bold border transition-all border-[#999] items-center px-3  w-full h-8 flex justify-between font-bold`}>
+            <p>
+              ERP
+            </p>
+            <p className="flex justify-center items-center">
+              QR Restuarant System
+            </p>
+            <p>
+              IN PROCCESING...
+            </p>
+
+          </div>
         </Link>
         <div className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-white">
           {/* Background image that fills the entire card */}
@@ -125,140 +208,60 @@ export default function Projects() {
             src="/project-1.png"
             alt="e-commerce"
             fill  // Next.js shortcut for full width + height
-            className={`${btnHoverd?"opacity-60":"opacity-100"} transition-all duration-300 object-cover`} // covers area + slightly faded
-          />
-
-          {/* Overlay text and content */}
-          <div className="relative z-10 top-40 flex flex-col items-center justify-between ">
-           <BlurText
-                        text="Electronics E Commerce"
-                        delay={50}
-                        animateBy="words"
-                        direction="bottom"
-                        className="text-4xl tracking-tighter "
-                    />
-            <HoverBorderGradient duration={0.5} 
-            
-
-             onMouseEnter={()=>setBtnHovered(true)}
-            onMouseLeave={()=>setBtnHovered(false)}
-            >
-                Try it out
-            </HoverBorderGradient>
-        
-          </div>
-        </div>
-      </div>
-
-      <div className="sticky top-28">
-        <Link target="_blank" href="https://e-commerce-mern-beige.vercel.app/">
-        <div className={`${darkMode ? "bg-black text-white  hover:bg-white hover:text-black" : "bg-white text-black  hover:bg-black hover:text-white"} border transition-all border-black items-center px-3 rounded-t-2xl w-full h-8 flex justify-between font-bold`}>
-          <p>
-            NEGM's Portfolio
-          </p>
-          <p >
-            Porftolio
-          </p>
-          <p>
-            <MdArrowOutward />
-          </p>
-        </div>
-        </Link>
-          <div className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-white">
-          {/* Background image that fills the entire card */}
-          <Image
-            src="/project-3.png"
-            alt="e-commerce"
-            fill  // Next.js shortcut for full width + height
-            className={`${btnHoverd?"opacity-100":"opacity-50"} transition-all duration-300 object-cover`} // covers area + slightly faded
-          />
-
-          {/* Overlay text and content */}
-          <div className="relative z-10  flex  flex-col items-center justify-between">
-            <h2 className="text-6xl font-bold mb-6">NEGM's Portfolio</h2>
-            <button
-            onMouseEnter={()=>setBtnHovered(true)}
-            onMouseLeave={()=>setBtnHovered(false)}
-            className="bg-white text-black px-6 py-3 rounded-xl font-bold hover:bg-black hover:text-white transition-all">
-              Try it out
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div className="sticky top-33">
-        
-          <Link target="_blank" href="https://e-commerce-mern-beige.vercel.app/">
-          <div className={`${darkMode ? "bg-black text-white  hover:bg-white hover:text-black" : "bg-white text-black  hover:bg-black hover:text-white"} border transition-all border-black items-center px-3 rounded-t-2xl w-full h-8 flex justify-between font-bold`}>
-          <p>
-            NEGM's Portfolio
-          </p>
-          <p >
-            Porftolio
-          </p>
-          <p>
-            <MdArrowOutward />
-          </p>
-          
-        </div>
-      </Link>
-         <div className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-white">
-          {/* Background image that fills the entire card */}
-          <Image
-            src="/project-1.png"
-            alt="e-commerce"
-            fill  // Next.js shortcut for full width + height
-            className={`${btnHoverd?"opacity-100":"opacity-50"} transition-all duration-300 object-cover`} // covers area + slightly faded
+            className={`${btnHoverd ? "opacity-100" : "opacity-50"} transition-all duration-300 object-cover`} // covers area + slightly faded
           />
 
           {/* Overlay text and content */}
           <div className="relative z-10  flex  flex-col items-center justify-between">
             <h2 className="text-6xl font-bold mb-6">Fashion Market</h2>
             <button
-            onMouseEnter={()=>setBtnHovered(true)}
-            onMouseLeave={()=>setBtnHovered(false)}
-            className="bg-white text-black px-6 py-3 rounded-xl font-bold hover:bg-black hover:text-white transition-all">
+              onMouseEnter={() => setBtnHovered(true)}
+              onMouseLeave={() => setBtnHovered(false)}
+              className="bg-white text-black px-6 py-3 rounded-xl font-bold hover:bg-black hover:text-white transition-all">
               Try it out
             </button>
           </div>
         </div>
       </div>
-      <div className="h-[150vh]">
+      <div onMouseEnter={()=>setHoveredProject4(true)}
+      onMouseLeave={()=>setHoveredProject4(false)}
+       className="h-[150vh]">
         <div className="sticky top-38">
           <Link target="_blank" href="https://e-commerce-mern-beige.vercel.app/">
-          <div className={`${darkMode ? "bg-black text-white  hover:bg-white hover:text-black" : "bg-white text-black  hover:bg-black hover:text-white"} border transition-all border-black items-center px-3 rounded-t-2xl w-full h-8 flex justify-between font-bold`}>
-            <p>
-              NEGM's Portfolio
-            </p>
-            <p >
-              Porftolio
-            </p>
-            <p>
-              <MdArrowOutward />
-            </p>
+            <div className={`${hoveredProject4 ? "bg-black text-white" : "bg-white text-black"} space-mono-bold border transition-all border-[#999] items-center px-3  w-full h-8 flex justify-between font-bold`}>
+              <p>
+                NEGM's Portfolio
+              </p>
+              <p >
+                Porftolio
+              </p>
+              <p>
+                WE ARE HERE
+              </p>
+            </div>
+          
+
+          <div ref={lastProjectRef} className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-white">
+            {/* Background image that fills the entire card */}
+            <Image
+              src="/project-3.png"
+              alt="e-commerce"
+              fill  // Next.js shortcut for full width + height
+              className={`${btnHoverd ? "opacity-100" : "opacity-50"} transition-all duration-300 object-cover`} // covers area + slightly faded
+            />
+
+            {/* Overlay text and content */}
+            <div className="relative z-10  flex  flex-col items-center justify-between">
+              <h2 className="text-6xl font-bold mb-6">NEGM's Portfolio</h2>
+              <button
+                onMouseEnter={() => setBtnHovered(true)}
+                onMouseLeave={() => setBtnHovered(false)}
+                className="bg-white text-black px-6 py-3 rounded-xl font-bold hover:bg-black hover:text-white transition-all">
+                Try it out
+              </button>
+            </div>
           </div>
           </Link>
-           
-           <div  ref={lastProjectRef} className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-white">
-          {/* Background image that fills the entire card */}
-          <Image
-            src="/project-3.png"
-            alt="e-commerce"
-            fill  // Next.js shortcut for full width + height
-            className={`${btnHoverd?"opacity-100":"opacity-50"} transition-all duration-300 object-cover`} // covers area + slightly faded
-          />
-
-          {/* Overlay text and content */}
-          <div className="relative z-10  flex  flex-col items-center justify-between">
-            <h2 className="text-6xl font-bold mb-6">NEGM's Portfolio</h2>
-            <button
-            onMouseEnter={()=>setBtnHovered(true)}
-            onMouseLeave={()=>setBtnHovered(false)}
-            className="bg-white text-black px-6 py-3 rounded-xl font-bold hover:bg-black hover:text-white transition-all">
-              Try it out
-            </button>
-          </div>
-        </div>
         </div>
       </div>
     </div>

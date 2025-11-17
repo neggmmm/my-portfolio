@@ -114,6 +114,20 @@ const ScrollReveal = ({
       );
     }
 
+    const showSkill = (text) => {
+      const overlay = document.querySelector('#customized-overlay');
+      if (overlay) {
+        overlay.textContent = text;
+        gsap.to(overlay, { opacity: 1, duration: 0.5, y: 0 });
+      }
+    };
+
+    const hideSkill = () => {
+      const overlay = document.querySelector('#customized-overlay');
+      if (overlay) {
+        gsap.to(overlay, { opacity: 0, duration: 0.6, y: -40,delay: 0.2});
+      }
+    };
     // ✨ Handle centralized customized skill text
     // This updates the fixed overlay as user scrolls into each skill section
     ScrollTrigger.create({
@@ -128,20 +142,6 @@ const ScrollReveal = ({
     });
 
     // Helper functions for overlay animation
-    const showSkill = (text) => {
-      const overlay = document.querySelector('#customized-overlay');
-      if (overlay) {
-        overlay.textContent = text;
-        gsap.to(overlay, { opacity: 1, duration: 0.6, y: 0 });
-      }
-    };
-
-    const hideSkill = () => {
-      const overlay = document.querySelector('#customized-overlay');
-      if (overlay) {
-        gsap.to(overlay, { opacity: 0, duration: 0.6, y: -20 });
-      }
-    };
 
     return () => ScrollTrigger.getAll().forEach((t) => t.kill());
   }, [

@@ -3,7 +3,7 @@ import ScrollReveal from "../Components/ScrollReveal";
 
 export default function Skills() {
   return (
-    <div id="skills" className="relative overflow-hidden select-none z-21 mx-20 goldman-regular">
+    <div id="skills" className="relative overflow-hidden h-[100vh] lg:h-[120vh] select-none z-21 mx-20 goldman-regular">
 
       {/* Scroll sections */}
       <div className="text-9xl">
