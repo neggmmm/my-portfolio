@@ -1,6 +1,6 @@
 "use client"
-import React, { useState } from "react";
-import { useDarkMode } from "../context/DarkModeContext";
+import React, { useState ,useRef} from "react";
+import emailjs from '@emailjs/browser';
 import BlurText from "../Components/BlurText";
 import { VscGithub } from "react-icons/vsc";
 import { PiLinkedinLogoBold } from "react-icons/pi";
@@ -15,6 +15,29 @@ export default function ContactUs() {
     const [sending, setSending] = useState(false)
     const [statusMessage, setStatusMessage] = useState("")
     const [sentName, setSentName] = useState("")
+    const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(process.env.NEXT_PUBLIC_SERVICE_ID, process.env.NEXT_PUBLIC_TEMPLATE_ID, form.current, {
+        publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY,
+      })
+      .then(
+        () => {
+          setSending(false);
+          setStatusMessage("Message sent successfully!");
+          setSentName(`Thank you, ${clientData.name}!`);
+          setClientData({ name: "", email: "", phoneNumber: "", message: "" });
+        },
+        (error) => {
+          setSending(false);
+          setStatusMessage("Failed to send message. Please try again.");
+        },
+      );
+      
+  };
+
     return (
         <div id="contactUs">
            
@@ -38,49 +61,15 @@ export default function ContactUs() {
                     />
                     </div>
                     <div className="flex flex-col xl:w-[40%] w-full text-white z-30">
-                        {/* Name */}
-                        <form onSubmit={async (e) => {
-                            e.preventDefault();
-                            setSending(true);
-                            setStatusMessage("");
-                            try {
-                                const res = await fetch('/api/contact', {
-                                    method: 'POST',
-                                    headers: { 'Content-Type': 'application/json' },
-                                    body: JSON.stringify(clientData),
-                                });
-
-                                if (res.status === 501) {
-                                    // SMTP not configured on server — offer mail client fallback
-                                    setStatusMessage('SMTP not configured on the server. Opening your mail client as a fallback...');
-                                    const subject = encodeURIComponent(clientData.name || 'New message');
-                                    const body = encodeURIComponent((clientData.message || '') + "\n\nPhone: " + (clientData.phoneNumber || 'N/A'));
-                                    window.location.href = `mailto:abdalkareemnegm@gmail.com?subject=${subject}&body=${body}`;
-                                    setSending(false);
-                                    return;
-                                }
-
-                                const data = await res.json();
-                                if (res.ok && data.ok) {
-                                    setStatusMessage('Message sent successfully!');
-                                    setSentName(clientData.name || '');
-                                    setClientData({ name: "", email: "", phoneNumber: "", message: "" });
-                                } else {
-                                    setStatusMessage(data?.error || 'Failed to send message');
-                                }
-                            } catch (err) {
-                                setStatusMessage('Unexpected error: ' + err.message);
-                            } finally {
-                                setSending(false);
-                            }
-                        }}>
+                        
+                        <form ref={form} onSubmit={sendEmail}>
                         <div className="flex flex-col ">
                             <label
                                 className={`${userNameFocused || clientData.name ? "translate-y-0 text-[#e9d6d6] font-bold" : "translate-y-9"} transition-all duration-500 text-[#aaa] focus:text-[#EDE8D0]`} htmlFor="name">
                                 Name
                             </label>
                                 <input onFocus={() => setUserNameFocused(true)} onBlur={() => setUserNameFocused(false)}
-                                    value={clientData.name} onChange={(e) => setClientData({ ...clientData, name: e.target.value })} id="name"
+                                    value={clientData.name} onChange={(e) => setClientData({ ...clientData, name: e.target.value })} id="name" name="name"
                                     className="bg-transparent border-b-4 border-[#e9d6d6] py-2 focus:outline-none" />
                         </div>
 
@@ -90,7 +79,7 @@ export default function ContactUs() {
                                 <label
                                     className={`${emailFocused || clientData.email ? "translate-y-0 text-[#e9d6d6] font-bold" : "translate-y-9"} transition-all duration-500 text-[#aaa] focus:text-[#EDE8D0]`} htmlFor="Email">Email</label>
                                 <input onFocus={() => setEmailFocused(true)} onBlur={() => setEmailFocused(false)}
-                                    value={clientData.email} onChange={(e) => setClientData({ ...clientData, email: e.target.value })} type="email" id="email"
+                                    value={clientData.email} onChange={(e) => setClientData({ ...clientData, email: e.target.value })} type="email" id="email" name="email"
                                     className="bg-transparent border-b-4 border-[#e9d6d6] py-2 focus:outline-none"></input>
                             </div>
                             {/* PHONE NUMBER */}
@@ -98,7 +87,7 @@ export default function ContactUs() {
                             <div className="flex flex-col">
                                 <label
                                     className={`${phoneNumberFocused || clientData.phoneNumber ? "translate-y-0 text-[#e9d6d6] font-bold" : "translate-y-9"} transition-all duration-500 text-[#aaa] focus:text-[#EDE8D0]`} htmlFor="phoneNumber">Phone Number</label>
-                                <input onFocus={() => setPhoneNumberFocused(true)} onBlur={() => setPhoneNumberFocused(false)}
+                                <input onFocus={() => setPhoneNumberFocused(true)} onBlur={() => setPhoneNumberFocused(false)} name="phoneNumber"
                                     value={clientData.phoneNumber} onChange={(e) => setClientData({ ...clientData, phoneNumber: e.target.value })}
                                     type="text" id="phoneNumber"
                                     className="bg-transparent border-b-4 border-[#e9d6d6] py-2 focus:outline-none"></input>
@@ -109,7 +98,7 @@ export default function ContactUs() {
                         <div className="flex flex-col">
                             <label className={`${messageFocused || clientData.message ? "translate-y-0 text-[#e9d6d6] font-bold" : "translate-y-15 "} transition-all duration-500 text-[#aaa] focus:text-[#EDE8D0]`} htmlFor="message">Message</label>
                             <textarea onFocus={() => setMessageFocused(true)} onBlur={() => setMessageFocused(false)}
-                                value={clientData.message} onChange={(e) => setClientData({ ...clientData, message: e.target.value })}
+                                value={clientData.message} onChange={(e) => setClientData({ ...clientData, message: e.target.value })} name="message"
                                 id="message" className="bg-transparent border-b-4 border-[#e9d6d6] py-2 focus:outline-none"></textarea>
                         </div>
                         <div className="bg-white duration-300 text-black py-2 hover:bg-[#EDE8D0] my-5 transition-all">

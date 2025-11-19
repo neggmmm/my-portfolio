@@ -125,22 +125,31 @@ export default function Projects() {
               <MdArrowOutward />
             </p>
           </div>
-
+        </Link>
           <div className="relative h-[100vh] flex items-end overflow-hidden">
             {/* Background image that fills the entire card */}
             <Image
               src="/project-1.png"
               alt="e-commerce"
-              fill 
-              className={` transition-all duration-300 object-cover brightness-80 contrast-50`} // covers area + slightly faded
+              fill
+              className={` transition-all duration-500 object-cover ${hoveredProject1? "brightness-90" :"brightness-40"}`} // covers area + slightly faded
             />
 
             {/* Overlay text and content */}
-            <div className="absolute text-[#232323] goldman-regular z-10 top-1/3  w-[50%] right-1/4 px-20 py-20 bg-white/30 backdrop-blur-sm">
+            <div
+              className="absolute text-[#232323] goldman-regular z-10 top-1/3  w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm">
               An e-commerce platform built with React, Node.js, and MongoDB, featuring user authentication, product management, shopping cart functionality, and secure payment integration.
+              <div className="flex items-center justify-center gap-8 mt-5">
+                <Link href="https://github.com/Fantasitc-4-2/e-commerce-MERN" target="_blank" className="flex justify-center items-center gap-2 text-[#FCFCFC] py-2 px-4 rounded-full bg-gray-900 hover:scale-110 transition-all duration-200" >
+                  Github
+                </Link>
+                <Link href="https://e-commerce-mern-beige.vercel.app/" target="_blank" className="flex justify-center items-center gap-2 text-[#FCFCFC] py-2 px-4 rounded-full bg-black hover:scale-110 transition-all duration-200" >
+                  Live Demo
+                </Link>
+              </div>
             </div>
           </div>
-        </Link>
+        
       </div>
 
       <div
@@ -159,22 +168,30 @@ export default function Projects() {
               <MdArrowOutward />
             </p>
           </div>
-
+         </Link>
           <div className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-white">
             {/* Background image that fills the entire card */}
             <Image
               src="/project-2.png"
               alt="e-commerce"
               fill  // Next.js shortcut for full width + height
-              className={` transition-all duration-300 object-cover brightness-80 contrast-50`} // covers area + slightly faded
+              className={` transition-all duration-300 object-cover ${hoveredProject2? "brightness-90" :"brightness-40"}`} // covers area + slightly faded
             />
 
             {/* Overlay text and content */}
-            <div className="absolute text-[#232323] goldman-regular z-10 top-1/3  w-[50%] right-1/4 px-20 py-20 bg-white/30 backdrop-blur-sm">
+            <div
+              className="absolute text-[#232323] goldman-regular z-10 top-1/3  w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm">
               An Angular-based e-commerce application with a focus on fashion products, featuring a user-friendly interface, product catalog, shopping cart, and secure checkout process.
+             <div className="flex items-center justify-center gap-8 mt-5">
+                <Link href="https://github.com/Fantasitc-4-2/cloth-store-angular" target="_blank" className="flex justify-center items-center gap-2 text-[#FCFCFC] py-2 px-4 rounded-full bg-gray-900 hover:scale-110 transition-all duration-200" >
+                  Github
+                </Link>
+                <Link href="https://cloth-store-angular-three.vercel.app/" target="_blank" className="flex justify-center items-center gap-2 text-[#FCFCFC] py-2 px-4 rounded-full bg-black hover:scale-110 transition-all duration-200" >
+                  Live Demo
+                </Link>
+              </div>
             </div>
           </div>
-        </Link>
       </div>
 
       <div
@@ -183,18 +200,18 @@ export default function Projects() {
         className="sticky top-33">
 
         {/* <Link target="_blank" href="https://e-commerce-mern-beige.vercel.app/"> */}
-          <div className={`${hoveredProject3 ? "bg-black text-white border-black " : "bg-white text-black "} space-mono-bold border transition-all border-[#999] items-center px-3  w-full h-8 flex justify-between font-bold`}>
-            <p>
-              SaaS Platform
-            </p>
-            <p className="flex justify-center items-center">
-              ITI Graduation Project
-            </p>
-            <p>
-              IN PROCCESING...
-            </p>
+        <div className={`${hoveredProject3 ? "bg-black text-white border-black " : "bg-white text-black "} space-mono-bold border transition-all border-[#999] items-center px-3  w-full h-8 flex justify-between font-bold`}>
+          <p>
+            SaaS Platform
+          </p>
+          <p className="flex justify-center items-center">
+            ITI Graduation Project
+          </p>
+          <p>
+            IN PROCCESING...
+          </p>
 
-          </div>
+        </div>
         {/* </Link> */}
         <div className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-white">
           {/* Background image that fills the entire card */}
@@ -202,13 +219,19 @@ export default function Projects() {
             src="/project-5.png"
             alt="Admin-dashboard"
             fill  // Next.js shortcut for full width + height
-            className={`transition-all duration-300 object-cover brightness-80 contrast-50`} // covers area + slightly faded
+            className={`transition-all duration-300 object-cover ${hoveredProject3? "brightness-90" :"brightness-40"}`} // covers area + slightly faded
           />
 
           {/* Overlay text and content */}
-           <div className="absolute text-[#232323] goldman-regular z-10 top-1/3  w-[50%] right-1/4 px-20 py-20 bg-white/30 backdrop-blur-sm">
+           <div
+              className="absolute text-[#232323] goldman-regular z-10 top-1/3  w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm">
             A SaaS platform that enables restaurants to create and manage digital menus accessible via QR codes, enhancing customer experience and streamlining order management.
-            </div>
+          <div className="flex items-center justify-center gap-8 mt-5">
+                <Link href="https://github.com/GraduationMERN/restaurant-system" target="_blank" className="flex justify-center items-center gap-2 text-[#FCFCFC] py-2 px-4 rounded-full bg-gray-900 hover:scale-110 transition-all duration-200" >
+                  Github
+                </Link>
+              </div>
+          </div>
         </div>
       </div>
       <div onMouseEnter={() => setHoveredProject4(true)}
@@ -227,20 +250,27 @@ export default function Projects() {
                 WE ARE HERE
               </p>
             </div>
+             </Link>
             <div ref={lastProjectRef} className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-white">
               {/* Background image that fills the entire card */}
               <Image
                 src="/project-4.png"
                 alt="e-commerce"
                 fill
-                className={`transition-all duration-300 object-cover brightness-80 contrast-50`}
+                className={`transition-all duration-300 object-cover ${hoveredProject4? "brightness-90" :"brightness-40"}`}
               />
               {/* Overlay text and content */}
-               <div className="absolute text-[#232323] goldman-regular z-10 top-1/3  w-[50%] right-1/4 px-20 py-20 bg-white/30 backdrop-blur-sm">
-              My personal portfolio website showcasing my projects, skills, and experience as a full-stack developer. Built with Next.js, Tailwind CSS and GSAP for animation.
+               <div
+              className="absolute text-[#232323] goldman-regular z-10 top-1/3  w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm">
+                My personal portfolio website showcasing my projects, skills, and experience as a full-stack developer. Built with Next.js, Tailwind CSS and GSAP for animation.
+              <div className="flex items-center justify-center gap-8 mt-5">
+                <Link href="https://github.com/neggmmm/my-portfolio" target="_blank" className="flex justify-center items-center gap-2 text-[#FCFCFC] py-2 px-4 rounded-full bg-gray-900 hover:scale-110 transition-all duration-200" >
+                  Github
+                </Link>
+              </div>
+              </div>
             </div>
-            </div>
-          </Link>
+         
         </div>
       </div>
     </div>
