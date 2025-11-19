@@ -81,6 +81,28 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+@layer utilities {
+  /* hint: target autofill */
+  input:-webkit-autofill {
+    /* hint: override background */
+    box-shadow: 0 0 0 1000px transparent inset !important;
+
+    /* hint: set text color so it matches your theme */
+    -webkit-text-fill-color: white !important;
+
+    /* hint: remove browser transition flash */
+    transition: background-color 9999s ease-in-out 0s;
+  }
+
+  /* hint: also include hover, focus, active */
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    box-shadow: 0 0 0 1000px transparent inset !important;
+    -webkit-text-fill-color: white !important;
+  }
+}
+
 .monoton-regular {
   font-family: "Monoton", sans-serif;
   font-weight: 400;
