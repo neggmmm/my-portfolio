@@ -137,7 +137,7 @@ export default function Projects() {
 
             {/* Overlay text and content */}
             <div
-              className="absolute text-[#232323] goldman-regular z-10 top-1/3  w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm">
+              className={`${hoveredProject1? "opactiy-100" :"opacity-0"} transition-all duration-500 absolute text-[#232323] goldman-regular z-10 bottom-30  w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm`}>
               An e-commerce platform built with React, Node.js, and MongoDB, featuring user authentication, product management, shopping cart functionality, and secure payment integration.
               <div className="flex items-center justify-center gap-8 mt-5">
                 <Link href="https://github.com/Fantasitc-4-2/e-commerce-MERN" target="_blank" className="flex justify-center items-center gap-2 text-[#FCFCFC] py-2 px-4 rounded-full bg-gray-900 hover:scale-110 transition-all duration-200" >
@@ -180,7 +180,7 @@ export default function Projects() {
 
             {/* Overlay text and content */}
             <div
-              className="absolute text-[#232323] goldman-regular z-10 top-1/3  w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm">
+              className={`${hoveredProject2? "opactiy-100" :"opacity-0"} transition-all duration-500 absolute text-[#232323] goldman-regular z-10 bottom-35  w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm`}>
               An Angular-based e-commerce application with a focus on fashion products, featuring a user-friendly interface, product catalog, shopping cart, and secure checkout process.
              <div className="flex items-center justify-center gap-8 mt-5">
                 <Link href="https://github.com/Fantasitc-4-2/cloth-store-angular" target="_blank" className="flex justify-center items-center gap-2 text-[#FCFCFC] py-2 px-4 rounded-full bg-gray-900 hover:scale-110 transition-all duration-200" >
@@ -224,7 +224,7 @@ export default function Projects() {
 
           {/* Overlay text and content */}
            <div
-              className="absolute text-[#232323] goldman-regular z-10 top-1/3  w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm">
+              className={`${hoveredProject3? "opactiy-100" :"opacity-0"} transition-all duration-500 absolute text-[#232323] goldman-regular z-10 bottom-40  w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm`}>
             A SaaS platform that enables restaurants to create and manage digital menus accessible via QR codes, enhancing customer experience and streamlining order management.
           <div className="flex items-center justify-center gap-8 mt-5">
                 <Link href="https://github.com/GraduationMERN/restaurant-system" target="_blank" className="flex justify-center items-center gap-2 text-[#FCFCFC] py-2 px-4 rounded-full bg-gray-900 hover:scale-110 transition-all duration-200" >
@@ -261,7 +261,7 @@ export default function Projects() {
               />
               {/* Overlay text and content */}
                <div
-              className="absolute text-[#232323] goldman-regular z-10 top-1/3  w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm">
+              className={`${hoveredProject4? "opactiy-100" :"opacity-0"} transition-all duration-500 absolute text-[#232323] goldman-regular z-10 bottom-45  w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm`}>
                 My personal portfolio website showcasing my projects, skills, and experience as a full-stack developer. Built with Next.js, Tailwind CSS and GSAP for animation.
               <div className="flex items-center justify-center gap-8 mt-5">
                 <Link href="https://github.com/neggmmm/my-portfolio" target="_blank" className="flex justify-center items-center gap-2 text-[#FCFCFC] py-2 px-4 rounded-full bg-gray-900 hover:scale-110 transition-all duration-200" >

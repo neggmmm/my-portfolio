@@ -124,7 +124,7 @@ export default function ContactUs() {
                         direction="top"
                         className="text-4xl font-bold md:text-5xl lg:text-6xl"
                     />
-                <div className="mt-10 flex justify-center hover:scale-120 duration-500 transition-all border-2 border-[#EDE8D0]/30 rounded-full shadow-[0_0_10px_rgba(237,232,208,0.3)]">
+                <div className="mt-10 flex justify-center hover:scale-120 duration-500 transition-all border-2 border-[#EDE8D0]/30 rounded-full hover:shadow-[0_0_10px_rgba(237,232,208,0.3)]">
 
                     <Link href={"https://github.com/neggmmm"} target="_blank"  className="text-4xl transition-all hover:scale-150 duration-300 py-3 px-4 ease-in-out text-[#EDE8D0] ">
                     <VscGithub />
