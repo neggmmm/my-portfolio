@@ -5,6 +5,10 @@ import BlurText from "../Components/BlurText";
 import { VscGithub } from "react-icons/vsc";
 import { PiLinkedinLogoBold } from "react-icons/pi";
 import Link from "next/link";
+import { BsWhatsapp } from "react-icons/bs";
+import { FaUpwork } from "react-icons/fa6";
+import { BiLogoGmail } from "react-icons/bi";
+
 
 export default function ContactUs() {
     const [userNameFocused, setUserNameFocused] = useState(false)
@@ -120,13 +124,24 @@ export default function ContactUs() {
                         direction="top"
                         className="text-4xl font-bold md:text-5xl lg:text-6xl"
                     />
-                <div className="mt-10 flex justify-center">
-                    <Link href={"https://github.com/neggmmm"} target="_blank"  className="text-5xl hover:translate-y-1 hover:text-[#50107a]/60 transition-all text-[#EDE8D0] mx-5">
+                <div className="mt-10 flex justify-center hover:scale-120 duration-500 transition-all border-2 border-[#EDE8D0]/30 rounded-full shadow-[0_0_10px_rgba(237,232,208,0.3)]">
+
+                    <Link href={"https://github.com/neggmmm"} target="_blank"  className="text-4xl transition-all hover:scale-150 duration-300 py-3 px-4 ease-in-out text-[#EDE8D0] ">
                     <VscGithub />
                     </Link>
-                    <Link href={"https://www.linkedin.com/in/neggmmm/"} target="_blank" className="text-5xl hover:translate-y-1 transition-all hover:text-[#1a08be]/80 text-[#EDE8D0] mx-5">
+                    <Link href={"https://www.linkedin.com/in/neggmmm/"} target="_blank" className="text-4xl transition-all hover:scale-150 duration-300 py-3 px-4 ease-in-out text-[#EDE8D0] ">
                     <PiLinkedinLogoBold />
                     </Link>
+                     <Link href={"https://www.upwork.com/freelancers/~01d5e39e4861b93c37"} target="_blank" className="text-4xl transition-all hover:scale-150 duration-300 py-3 px-4 ease-in-out text-[#EDE8D0] ">
+                    <FaUpwork />
+                    </Link>
+                    <Link href={"mailto:abdalkareemnegm@gmail.com"} className="text-4xl transition-all hover:scale-150 duration-300 py-3 px-4 ease-in-out text-[#EDE8D0]">
+                    < BiLogoGmail/>
+                    </Link>
+                     <Link href={"https://wa.me/201063681459?text=Hello, I like your portfolio"} target="_blank" className="text-4xl transition-all hover:scale-150 duration-300 py-3 px-4 ease-in-out text-[#EDE8D0]">
+                    <BsWhatsapp />
+                    </Link>
+                    
                 </div>
                 </div>
                 <div className="absolute top-20 left-20 opacity-20 z-20 select-none">
