@@ -17,7 +17,7 @@ export default function Hero() {
 
       <div className="grid grid-cols-3 my-30 h-[70%]">
         <div className="col-span-2 flex flex-col justify-between">
-          <div className="flex flex-col justify-center mx-20 w-full ">
+          <div className="flex flex-col justify-center mx-20 w-full  goldman-regular">
             <TextPressure
               text="Abdalkareem Negm"
               flex={true}
@@ -34,27 +34,14 @@ export default function Hero() {
                 <span>Software Engineer </span>|<span> Web Developer</span>
               </div>
             </div>
-            <div className="flex">
-            <Link 
-            onMouseEnter={() => setHoveredLinkedIn(true)}
-            onMouseLeave={() => setHoveredLinkedIn(false)}
-            target="_blank"
-            href="https://linkedin.com/in/neggmmm">
-            <div className={`${hoveredGitHub?"bg-white text-black skew-x-0":"bg-black text-white"}  mt-10 py-2 px-6   skew-x-24 hover:-skew-x-24 transition-all duration-300   z-20`}>
-              LINKEDIN
-            </div>
-            </Link>
-             <Link 
-             onMouseEnter={()=>setHoveredGitHub(true)}
-              onMouseLeave={()=>setHoveredGitHub(false)}
-              target="_blank"
-             href="https://github.com/neggmmm">
-            <div className={` mt-10 py-2 px-6  hover:text-white hover:bg-black  hover:skew-x-24 transition-all duration-300`}>
-              GITHUB
-            </div>
-            
-            </Link>
-          </div>
+            <div className="flex items-center justify-start gap-4 mt-5">
+                <Link href="https://www.github.com/neggmmm/" target="_blank" className="flex justify-center items-center gap-2 text-black border border-[#aaa] py-2 px-4  bg-transparent hover:bg-black hover:scale-110 hover:border-black hover:text-[#FCFCFCFC] transition-all duration-200" >
+                  Github
+                </Link>
+                <Link href="https://www.linkedin.com/in/neggmmm/" target="_blank" className="flex justify-center items-center gap-2 text-[#FCFCFC] py-2 px-4 border border-black bg-black hover:scale-110 transition-all duration-200" >
+                  LinkedIn
+                </Link>
+              </div>
           </div>
           <Link
             href="#"
@@ -68,7 +55,7 @@ export default function Hero() {
                 text="OPEN TO WORK | FULLSTACK | "
                 onHover="pause"
                 spinDuration={20}
-                className="custom-class monoton-regular"
+                className="custom-class "
               />
             </div>
           </Link>

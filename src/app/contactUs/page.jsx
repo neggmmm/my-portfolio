@@ -144,7 +144,7 @@ export default function ContactUs() {
                         )}
                     </div>
                 </div>
-                <div className="flex flex-col justify-center items-center">
+                <div className="flex flex-col justify-center items-center select-none">
                     <BlurText
                         text="Get in Touch"
                         delay={350}
