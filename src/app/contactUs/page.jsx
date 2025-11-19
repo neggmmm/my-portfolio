@@ -132,14 +132,14 @@ export default function ContactUs() {
                         {/* status / success */}
                         {statusMessage && (
                             <div
-                                className={`fixed top-6 right-1/2 px-4 py-3 rounded-lg shadow-lg transition-all duration-500 bg-[#222] text-[#e9d6d6] 
+                                className={`fixed bottom-12 right-12 px-4 py-3 rounded-lg shadow-lg transition-all duration-500 bg-[#222] goldman-regular  text-[#e9d6d6] 
                                             ${statusMessage ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
                                             `}
                             >
                                 <p>{statusMessage}</p>
 
                                 {/* optional second line */}
-                                {sentName && <p className="text-lg font-bold mt-1">{sentName}</p>}
+                                {sentName && <p className="text-lg  font-bold mt-1">{sentName}</p>}
                             </div>
                         )}
                     </div>
