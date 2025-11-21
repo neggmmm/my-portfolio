@@ -23,34 +23,121 @@ export default function ContactUs() {
     const [statusMessage, setStatusMessage] = useState("")
     const [sentName, setSentName] = useState("")
     const form = useRef();
-  gsap.registerPlugin(_ScrollTrigger);
+    gsap.registerPlugin(_ScrollTrigger);
 
-  useGSAP(() => {
-    // hint: selecting all <span> letters inside the logo
-    const letters = "#xxl-logo span";
+    useGSAP(() => {
+        // hint: selecting all <span> letters inside the logo
+        const letters = ".up-animate1 span";
 
-    gsap.from(letters, {
-      // start letters lower (hint: from 200px)
-      y: 200,
-      opacity: 0,
+        gsap.from(letters, {
+            // start letters lower (hint: from 200px)
+            y: 200,
+            opacity: 0,
 
-      // total animation time for each letter
-      duration: 2,
+            // total animation time for each letter
+            duration: 2,
 
-      // hint: makes movement smooth
-      ease: "power2.out",
+            // hint: makes movement smooth
+            ease: "power2.out",
 
-      // hint: delays each letter slightly
-      stagger: 0.3,
+            // hint: delays each letter slightly
+            stagger: 0.5,
 
-      // scroll trigger settings
-      scrollTrigger: {
-        trigger: "#xxl-logo",
-        start: "top 60%", // hint: animation starts when logo enters screen
-         toggleActions: "restart none none reset",
-      },
+            // scroll trigger settings
+            scrollTrigger: {
+                trigger: ".up-animate1",
+                start: "top 99%", // hint: animation starts when logo enters screen
+                toggleActions: "restart none none reset",
+            },
+            filter: "blur(20px)",
+        });
     });
-  });
+
+
+      useGSAP(() => {
+        // hint: selecting all <span> letters inside the logo
+        const letters = ".up-animate2 span";
+
+        gsap.from(letters, {
+            // start letters lower (hint: from 200px)
+            y: 200,
+            opacity: 0,
+
+            // total animation time for each letter
+            duration: 2,
+
+            // hint: makes movement smooth
+            ease: "power2.out",
+
+            // hint: delays each letter slightly
+            stagger: 0.5,
+
+            // scroll trigger settings
+            scrollTrigger: {
+                trigger: ".up-animate2",
+                start: "top 99%", // hint: animation starts when logo enters screen
+                toggleActions: "restart none none reset",
+            },
+            filter: "blur(20px)",
+        });
+    });
+
+
+    useGSAP(() => {
+        // hint: selecting all <span> letters inside the logo
+        const letters = ".down-animate1 span";
+
+        gsap.from(letters, {
+            // start letters lower (hint: from 200px)
+            y: -100,
+            opacity: 0,
+
+            // total animation time for each letter
+            duration: 1,
+
+            // hint: makes movement smooth
+            ease: "power2.out",
+
+            // hint: delays each letter slightly
+            stagger: 0.5,
+
+            // scroll trigger settings
+            scrollTrigger: {
+                trigger: ".down-animate1",
+                start: "top 99%", // hint: animation starts when logo enters screen
+                toggleActions: "restart none none reset",
+            },
+            filter: "blur(20px)",
+        });
+    });
+
+     useGSAP(() => {
+        // hint: selecting all <span> letters inside the logo
+        const letters = ".down-animate2 span";
+
+        gsap.from(letters, {
+            // start letters lower (hint: from 200px)
+            y: -100,
+            opacity: 0,
+
+            // total animation time for each letter
+            duration: 1,
+
+            // hint: makes movement smooth
+            ease: "power2.out",
+
+            // hint: delays each letter slightly
+            stagger: 0.5,
+
+            // scroll trigger settings
+            scrollTrigger: {
+                trigger: ".down-animate2",
+                start: "top 99%", // hint: animation starts when logo enters screen
+                toggleActions: "restart none none reset",
+            },
+            filter: "blur(20px)",
+        });
+    });
     useEffect(() => {
         if (!statusMessage && !sentName) return;
 
@@ -97,20 +184,20 @@ export default function ContactUs() {
 
                 <div className="flex flex-col xl:flex-row  w-full justify-between items-end">
                     <div className="mb-30 flex flex-col  items-center xl:items-start">
-                        <BlurText
-                            text="Let's Get Inspired Together!"
-                            delay={150}
-                            animateBy="words"
-                            direction="top"
-                            className="text-xl font-bold md:text-5xl lg:text-6xl"
-                        />
-                        <BlurText
-                            text="Send Your message"
-                            delay={150}
-                            animateBy="words"
-                            direction="bottom"
-                            className="text-xl md:text-4xl lg:text:text-5xl"
-                        />
+
+                        <div className="down-animate1 text-xl font-bold md:text-5xl lg:text-6xl">
+                            <span className="inline-block">Let's&nbsp;</span>
+                            <span className="inline-block">Get&nbsp;</span>
+                            <span className="inline-block">Inspired&nbsp;</span>
+                            <span className="inline-block">Together!</span>
+                        </div>
+                        <div className="up-animate1 text-xl md:text-4xl lg:text:text-5xl">
+                            <span className="inline-block">Send&nbsp;</span>
+                            <span className="inline-block">Your&nbsp;</span>
+                            <span className="inline-block">Message&nbsp;</span>
+                        </div>
+
+
                     </div>
                     <div className="flex flex-col xl:w-[40%] w-full text-white z-30">
 
@@ -175,13 +262,18 @@ export default function ContactUs() {
                     </div>
                 </div>
                 <div className="flex flex-col justify-center items-center select-none">
-                    <BlurText
-                        text="Get in Touch"
-                        delay={350}
-                        animateBy="words"
-                        direction="top"
-                        className="text-4xl font-bold md:text-5xl lg:text-6xl"
-                    />
+
+                    <div className="down-animate2 text-4xl font-bold md:text-5xl lg:text-6xl">
+                        <span className="inline-block ">
+                            Get&nbsp;
+                        </span>
+                        <span className="inline-block">
+                            In&nbsp;
+                        </span>
+                        <span className="inline-block">
+                            Touch
+                        </span>
+                    </div>
                     <div className="mt-10 flex justify-center hover:scale-120 duration-500 transition-all border-2 border-[#EDE8D0]/30 rounded-full hover:shadow-[0_0_10px_rgba(237,232,208,0.3)]">
 
                         <Link href={"https://github.com/neggmmm"} target="_blank" className="text-4xl transition-all hover:scale-150 duration-300 py-3 px-4 ease-in-out text-[#EDE8D0] ">
@@ -206,7 +298,7 @@ export default function ContactUs() {
                     <div className="hidden xl:block">
                         <p
                             id="xxl-logo"
-                            className="text-9xl tracking-tighter"
+                            className="text-9xl tracking-tighter up-animate2"
                         >
                             <span className="inline-block">N</span>
                             <span className="inline-block">E</span>
