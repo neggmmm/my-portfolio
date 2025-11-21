@@ -4,23 +4,61 @@ import Divider from "./Divider";
 import Link from "next/link";
 import { HiArrowTurnDownRight } from "react-icons/hi2";
 import { useDarkMode } from "../context/DarkModeContext";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
   const { darkMode } = useDarkMode();
+  const eRotateStart = () =>{
+     gsap.killTweensOf("#eLogo");
+    gsap.to("#eLogo", {
+      rotationY: 180,   
+      duration: 1,     
+      ease: "power2.out",  
+     
+    });
+  }
+  const eRotateEnd = () =>{
+     // hint: bring the letter back to its original state
+      gsap.killTweensOf("#eLogo");
+    gsap.to("#eLogo", {
+      rotationY: 0,
+      duration: 0.6,
+      ease: "power2.out"
+    });
+  }
+
+    const mRotateStart = () =>{
+       gsap.killTweensOf("#mLogo");
+    gsap.to("#mLogo", {
+      rotationY: 360,   
+      duration: 0.5,     
+      ease: "power2.out",  
+      transformOrigin: "center center" 
+    });
+  }
+  const mRotateEnd = () =>{
+     // hint: bring the letter back to its original state
+      gsap.killTweensOf("#mLogo");
+    gsap.to("#mLogo", {
+      rotationY: 0,
+      duration: 1,
+      ease: "power2.out"
+    });
+  }
   return (
     <div className={`fixed top-0 w-full z-50 select-none ${darkMode ? "bg-transparent" : "bg-white"}`}>
       <div className={`${darkMode ? "" : ""}  transition-all duration-500 `} >
         <nav className="flex justify-between mx-20">
           <Link href={"/"}>
-            <h1
-
-              className={` ${darkMode ? "text-white" : "text-black"}  text-3xl my-7 font-bold rounded-full transition-all duration-500`}
-            >
-              NEGM
-            </h1>
+           <h1
+  onMouseEnter={() => {eRotateStart(); mRotateStart()}}
+  onMouseLeave={() => {eRotateEnd(); mRotateEnd()}}
+  className={`${darkMode ? "text-white" : "text-black"} text-3xl my-7 font-bold rounded-full transition-all duration-500`}
+>
+  N<span className="inline-block" id="eLogo">E</span>G<span id="mLogo" className="inline-block">M</span>
+</h1>
           </Link>
           <div
             onClick={() => setMenuOpen(!menuOpen)}

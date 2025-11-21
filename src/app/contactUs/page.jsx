@@ -8,6 +8,9 @@ import Link from "next/link";
 import { BsWhatsapp } from "react-icons/bs";
 import { FaUpwork } from "react-icons/fa6";
 import { BiLogoGmail } from "react-icons/bi";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import _ScrollTrigger from "gsap/ScrollTrigger";
 
 
 export default function ContactUs() {
@@ -20,7 +23,34 @@ export default function ContactUs() {
     const [statusMessage, setStatusMessage] = useState("")
     const [sentName, setSentName] = useState("")
     const form = useRef();
+  gsap.registerPlugin(_ScrollTrigger);
 
+  useGSAP(() => {
+    // hint: selecting all <span> letters inside the logo
+    const letters = "#xxl-logo span";
+
+    gsap.from(letters, {
+      // start letters lower (hint: from 200px)
+      y: 200,
+      opacity: 0,
+
+      // total animation time for each letter
+      duration: 2,
+
+      // hint: makes movement smooth
+      ease: "power2.out",
+
+      // hint: delays each letter slightly
+      stagger: 0.3,
+
+      // scroll trigger settings
+      scrollTrigger: {
+        trigger: "#xxl-logo",
+        start: "top 60%", // hint: animation starts when logo enters screen
+         toggleActions: "restart none none reset",
+      },
+    });
+  });
     useEffect(() => {
         if (!statusMessage && !sentName) return;
 
@@ -40,7 +70,7 @@ export default function ContactUs() {
             setSentName("");
             return;
         }
-        
+
         emailjs
             .sendForm(process.env.NEXT_PUBLIC_SERVICE_ID, process.env.NEXT_PUBLIC_TEMPLATE_ID, form.current, {
                 publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY,
@@ -174,13 +204,14 @@ export default function ContactUs() {
                 </div>
                 <div className="absolute top-20 left-20 opacity-20 z-20 select-none">
                     <div className="hidden xl:block">
-                        <BlurText
-                            text="N E G M"
-                            delay={550}
-                            animateBy="words"
-                            direction="top"
-                            className="text-9xl tracking-tighter "
-                        />
+                        <p
+                            id="xxl-logo"
+                            className="text-9xl tracking-tighter"
+                        >
+                            <span className="inline-block">N</span>
+                            <span className="inline-block">E</span>
+                            <span className="inline-block">G</span>
+                            <span className="inline-block">M</span></p>
                     </div>
                 </div>
             </div>
