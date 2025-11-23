@@ -2,7 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Notable&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -101,6 +102,20 @@
     box-shadow: 0 0 0 1000px transparent inset !important;
     -webkit-text-fill-color: white !important;
   }
+}
+
+.orbitron-reg {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.orbitron-600 {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
 }
 
 .monoton-regular {
