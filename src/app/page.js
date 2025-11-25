@@ -6,6 +6,7 @@ import Projects from "./projects/page";
 import Hero from "./hero/page";
 import Skills from "./skills/page";
 import About from "./about/page";
+import Preloader from "./Components/loading";
 
 
 export default function Home() {
@@ -29,10 +30,11 @@ export default function Home() {
   }, []);
   return (
     <div
-      className={`transition-colors duration-1000 ${
+      className={`transition-colors duration-1000 h-full ${
         darkMode ? "bg-[#111] text-white" : "bg-white text-[#111]"
       }`}
     >
+      <Preloader />
       <Hero />
       <div ref={aboutRef}>
       <About />

@@ -48,7 +48,7 @@ export default function Navbar() {
     });
   }
   return (
-    <div className={`fixed top-0 w-full z-50 select-none ${darkMode ? "bg-transparent" : "bg-white"}`}>
+    <div className={`fixed top-0 w-full   select-none ${darkMode ? "bg-transparent" : "bg-white"}`}>
       <div className={`${darkMode ? "" : ""}  transition-all duration-500 `} >
         <nav className="flex justify-between mx-20">
           <Link href={"/"}>
@@ -75,7 +75,7 @@ export default function Navbar() {
       `} />
             {/* bottom bar */}
             <div className={`
-        absolute left-1/2 -translate-x-1/2 w-12 h-[2px] origin-center duration-300 transition-transform 
+        absolute left-1/2  -translate-x-1/2 w-12 h-[2px] origin-center duration-300 transition-transform 
         ${menuOpen
                 ? "top-1/2 -translate-y-1/3 -rotate-45 bg-black"
                 : "top-[calc(50%+8px)] translate-y-0 rotate-0"
@@ -83,8 +83,8 @@ export default function Navbar() {
         ${menuOpen ? "bg-black" : darkMode ? "bg-white" : "bg-black"}
       `} />
           </div>
-          <ul
-            className={` fixed right-0 top-0 w-full md:w-[50%] xl:w-[35%] h-full duration-500 bg-white ${menuOpen ? "translate-x-0" : "translate-x-full"
+          <ul 
+            className={`z-50 fixed right-0 top-0 w-full md:w-[50%] xl:w-[35%] h-full duration-500 bg-white ${menuOpen ? "translate-x-0" : "translate-x-full"
               }`}
           >
             <div className=" flex flex-col h-full justify-between goldman-regular">

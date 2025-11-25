@@ -213,7 +213,7 @@
 }
 
 .text-9xl {
-  font-size: 30rem;
+  font-size: 25rem;
     @media (max-width: 1700px ){
     font-size: 25rem;
   }

@@ -1,14 +1,16 @@
-'use client'
-import React, { useState } from "react";
-import TextPressure from "../Components/TextPressure";
-import Magnet from "../Components/Magnet";
-import { useDarkMode } from "../context/DarkModeContext";
+import { useGSAP } from "@gsap/react";
 import Link from "next/link";
 import CircularText from "../Components/CricularText";
-import { hover } from "motion";
+import gsap from "gsap";
+
 
 export default function Hero() {
-
+  useGSAP(()=>{
+    gsap.to("name",{
+      y:200,
+      duration:1
+    })
+  },[])
   return (
 
     <div id="hero" className="h-screen overflow-hidden select-none">
@@ -16,8 +18,8 @@ export default function Hero() {
       <div className="grid grid-cols-3 my-30 h-[70%]">
         <div className="col-span-2 flex flex-col justify-between">
           <div className="flex flex-col justify-center mx-20 w-full h-full goldman-regular">
-            <div className="orbitron-reg text-8xl">
-              Abdalkareem <span className="orbitron-600">NEGM</span>
+            <div id="name" className="orbitron-reg text-8xl">
+              Abdalkareem <span id="navbar-negm" className="orbitron-600"></span>
               </div>
             <div className="text-3xl flex content-between justify-between flex-col">
               <div className="">
@@ -40,7 +42,7 @@ export default function Hero() {
               document.querySelector("#contactUs")?.scrollIntoView();
             }}
           >
-            <div className="absolute bottom-40 right-40">
+            <div className="absolute bottom-20 right-40">
               <CircularText
                 text="OPEN TO WORK | FULLSTACK | "
                 onHover="pause"

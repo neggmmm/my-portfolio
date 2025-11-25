@@ -104,14 +104,14 @@ export default function Projects() {
         transition: "transform 0.1s ease-out",
         zIndex: 0
       }}
-      className="transition-transform duration-400 select-none"
+      className="transition-transform duration-400 select-none "
       id="projects"
     >
 
       <div
         onMouseEnter={() => setHoveredProject1(true)}
         onMouseLeave={() => setHoveredProject1(false)}
-        className="sticky top-23">
+        className="sticky top-0">
         <Link target="_blank" href="https://e-commerce-mern-beige.vercel.app/">
           <div
             className={`${hoveredProject1 ? "bg-black text-white border-black" : "bg-white text-black"} space-mono-bold  border transition-all border-[#999] items-center px-3  w-full h-8 flex justify-between font-bold`}>
@@ -155,7 +155,7 @@ export default function Projects() {
       <div
         onMouseEnter={() => setHoveredProject2(true)}
         onMouseLeave={() => setHoveredProject2(false)}
-        className="sticky top-28">
+        className="sticky top-5">
         <Link target="_blank" href="https://cloth-store-angular-three.vercel.app/">
           <div className={`${hoveredProject2 ? "bg-black text-white border-black" : "bg-white text-black "} space-mono-bold border transition-all border-[#999] items-center px-3  w-full h-8 flex justify-between font-bold`}>
             <p>
@@ -195,7 +195,7 @@ export default function Projects() {
       <div
         onMouseEnter={() => setHoveredProject3(true)}
         onMouseLeave={() => setHoveredProject3(false)}
-        className="sticky top-33">
+        className="sticky top-10">
 
         {/* <Link target="_blank" href="https://e-commerce-mern-beige.vercel.app/"> */}
         <div className={`${hoveredProject3 ? "bg-black text-white border-black " : "bg-white text-black "} space-mono-bold border transition-all border-[#999] items-center px-3  w-full h-8 flex justify-between font-bold`}>
@@ -235,7 +235,7 @@ export default function Projects() {
       <div onMouseEnter={() => setHoveredProject4(true)}
         onMouseLeave={() => setHoveredProject4(false)}
         className="h-[150vh]">
-        <div className="sticky top-38">
+        <div className="sticky top-15">
           <Link href="/">
             <div className={`${hoveredProject4 ? "bg-black text-white border-black" : "bg-white text-black"} space-mono-bold border transition-all border-[#999] items-center px-3  w-full h-8 flex justify-between font-bold`}>
               <p>
