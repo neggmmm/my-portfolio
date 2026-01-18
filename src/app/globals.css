@@ -46,6 +46,16 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+::-webkit-scrollbar {
+  width: 12px; 
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(37, 37, 37) /* semi-transparent */
+}
+::-webkit-scrollbar-track {
+  background: transparent; /* 👈 key part */
+}
+
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
