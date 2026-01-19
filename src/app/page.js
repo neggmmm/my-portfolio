@@ -6,6 +6,7 @@ import Projects from "./projects/page";
 import Hero from "./hero/page";
 import Skills from "./skills/page";
 import PixelCursor from "./Components/PixelCursor";
+import PixelCursorDot from "./Components/PixelCursorDot";
 
 
 export default function Home() {
@@ -49,6 +50,7 @@ export default function Home() {
         }`}
     >
       <PixelCursor enabled={pixelEnabled} />
+      <PixelCursorDot />
       <Hero />
       <div ref={aboutRef}>
       </div>
