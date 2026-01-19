@@ -2,7 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Notable&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -113,17 +114,6 @@
   }
 }
 
-.monoton-regular {
-  font-family: "Monoton", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.notable-regular {
-  font-family: "Notable", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
 
 .goldman-regular {
   font-family: "Goldman", sans-serif;
@@ -173,6 +163,19 @@
   font-style: italic;
 }
 
+.orbitron-regular {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.orbitron-bold {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
@@ -205,6 +208,47 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+}
+
+.text-first {
+  font-size: 10rem;
+    @media (max-width: 1450px ){
+    font-size: 9rem;
+  }
+    @media (max-width: 1150px ){
+    font-size: 8rem;
+  }
+  @media (max-width: 920px ){
+    font-size: 6rem;
+  }
+    @media (max-width: 720px ){
+    font-size: 4rem;
+  }
+  @media (max-width: 600px ){
+    font-size: 3rem;
+  }
+}
+
+.text-8xl{
+
+}
+.text-brand {
+  font-size: 25rem;
+    @media (max-width: 1450px ){
+    font-size: 20rem;
+  }
+    @media (max-width: 1150px ){
+    font-size: 15rem;
+  }
+  @media (max-width: 920px ){
+    font-size: 10rem;
+  }
+    @media (max-width: 720px ){
+    font-size: 9rem;
+  }
+  @media (max-width: 600px ){
+    font-size: 6rem;
+  }
 }
 
 .text-9xl {
