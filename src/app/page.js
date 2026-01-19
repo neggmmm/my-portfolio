@@ -1,16 +1,20 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDarkMode } from "./context/DarkModeContext";
 import ContactUs from "./contactUs/page";
 import Projects from "./projects/page";
 import Hero from "./hero/page";
 import Skills from "./skills/page";
+import PixelCursor from "./Components/PixelCursor";
 
 
 export default function Home() {
   const skillsRef = useRef(null);
   const aboutRef = useRef(null)
   const { darkMode, setDarkMode } = useDarkMode();
+
+  const contactRef = useRef(null)
+  const [pixelEnabled, setPixelEnabled] = useState(true)
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -26,19 +30,36 @@ export default function Home() {
     // observer.observe(aboutRef.current);
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setPixelEnabled(!entry.isIntersecting)
+      },
+      { threshold: 0.2 }
+    )
+
+    if (contactRef.current) observer.observe(contactRef.current)
+
+    return () => observer.disconnect()
+  }, [])
   return (
     <div
-      className={`transition-colors duration-1000 ${
-        darkMode ? "bg-[#111] text-white" : "bg-white text-[#111]"
-      }`}
+      className={`transition-colors duration-1000 ${darkMode ? "bg-[#111] text-white" : "bg-white text-[#111]"
+        }`}
     >
+      <PixelCursor enabled={pixelEnabled} />
       <Hero />
       <div ref={aboutRef}>
       </div>
       <Projects />
       <div ref={skillsRef}>
-      <Skills />
-      <ContactUs />
+        <Skills />
+        </div>
+        <div ref={contactRef}>
+
+        <ContactUs />
+        
       </div>
     </div>
   );
