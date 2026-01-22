@@ -1,8 +1,9 @@
 "use client"
 import { useEffect, useRef } from "react"
 import gsap from "gsap"
+import StarPixel from "./StarPixel"
 
-export default function PixelCursorDot() {
+export default function PixelCursorDot({ color = "#000" }) {
   const cursorRef = useRef(null)
 
   useEffect(() => {
@@ -18,18 +19,26 @@ export default function PixelCursorDot() {
 
     window.addEventListener("mousemove", move)
 
-    gsap.ticker.add(() => {
-      pos.x += (mouse.x - pos.x) * 0.5
-      pos.y += (mouse.y - pos.y) * 0.5
+    const tick = () => {
+      pos.x += (mouse.x - pos.x) * 0.35
+      pos.y += (mouse.y - pos.y) * 0.35
+
+      // snap to grid = pixel feel
+      const GRID = 4
+      const snappedX = Math.round(pos.x / GRID) * GRID
+      const snappedY = Math.round(pos.y / GRID) * GRID
 
       gsap.set(cursorRef.current, {
-        x: pos.x,
-        y: pos.y,
+        x: snappedX,
+        y: snappedY,
       })
-    })
+    }
+
+    gsap.ticker.add(tick)
 
     return () => {
       window.removeEventListener("mousemove", move)
+      gsap.ticker.remove(tick)
     }
   }, [])
 
@@ -38,11 +47,26 @@ export default function PixelCursorDot() {
       ref={cursorRef}
       className="fixed top-0 left-0 z-[9999] pointer-events-none"
       style={{
-        width: 20,
-        height: 20,
-        backgroundColor: "black",
-        transform: "translate(-50%, -50%)",
+        transform: "translate(0, 0)", // hotspot top-left
       }}
-    />
+    >
+      {/* Minecraft-style arrow (pixels) */}
+      <div className="grid grid-cols-5 gap-[1px]">
+        {[
+          1, 0, 0, 0, 0,
+          1, 1, 0, 0, 0,
+          1, 1, 1, 0, 0,
+          1, 1, 1, 1, 0,
+          1, 1, 1, 1, 1,
+          1, 1, 1, 0, 0,
+          1, 1, 0, 0, 0,
+          1, 0, 0, 0, 0,
+        ].map((cell, i) => (
+          <div key={i}>
+            {cell ? <StarPixel color={color} /> : <div style={{ width: 3, height: 3 }} />}
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }

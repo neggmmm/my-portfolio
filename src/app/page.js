@@ -13,6 +13,7 @@ export default function Home() {
   const skillsRef = useRef(null);
   const aboutRef = useRef(null)
   const { darkMode, setDarkMode } = useDarkMode();
+  const [cursorColor, setCursorColor] = useState("#000")
 
   const contactRef = useRef(null)
   const [pixelEnabled, setPixelEnabled] = useState(true)
@@ -33,6 +34,10 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+  setCursorColor(darkMode ? "#fff" : "#000")
+}, [darkMode])
+
+  useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         setPixelEnabled(!entry.isIntersecting)
@@ -49,8 +54,7 @@ export default function Home() {
       className={`transition-colors duration-1000 ${darkMode ? "bg-[#111] text-white" : "bg-white text-[#111]"
         }`}
     >
-      <PixelCursor enabled={pixelEnabled} />
-      <PixelCursorDot />
+      <PixelCursorDot color={cursorColor} />
       <Hero />
       <div ref={aboutRef}>
       </div>
