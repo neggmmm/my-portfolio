@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Divider from "./Divider";
 import Link from "next/link";
 import { HiArrowTurnDownRight } from "react-icons/hi2";
@@ -9,7 +9,11 @@ import gsap from "gsap";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { darkMode } = useDarkMode();
+  const { darkMode, setMenuOpen: setGlobalMenuOpen } = useDarkMode();
+
+  useEffect(() => {
+    setGlobalMenuOpen(menuOpen);
+  }, [menuOpen, setGlobalMenuOpen]);
   const eRotateStart = () =>{
      gsap.killTweensOf("#eLogo");
     gsap.to("#eLogo", {

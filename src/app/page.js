@@ -12,7 +12,7 @@ import PixelCursorDot from "./Components/PixelCursorDot";
 export default function Home() {
   const skillsRef = useRef(null);
   const aboutRef = useRef(null)
-  const { darkMode, setDarkMode } = useDarkMode();
+  const { darkMode, setDarkMode, menuOpen } = useDarkMode();
   const [cursorColor, setCursorColor] = useState("#000")
 
   const contactRef = useRef(null)
@@ -34,8 +34,8 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-  setCursorColor(darkMode ? "#fff" : "#000")
-}, [darkMode])
+  setCursorColor(darkMode && !menuOpen ? "#fff" : "#000")
+}, [darkMode, menuOpen])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
