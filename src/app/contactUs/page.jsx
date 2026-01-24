@@ -31,7 +31,7 @@ export default function ContactUs() {
 
         gsap.from(letters, {
             // start letters lower (hint: from 200px)
-            y: 200,
+            y: 150,
             opacity: 0,
 
             // total animation time for each letter
@@ -60,7 +60,7 @@ export default function ContactUs() {
 
         gsap.from(letters, {
             // start letters lower (hint: from 200px)
-            y: 200,
+            y: 150,
             opacity: 0,
 
             // total animation time for each letter
@@ -89,7 +89,7 @@ export default function ContactUs() {
 
         gsap.from(letters, {
             // start letters lower (hint: from 200px)
-            y: -100,
+            y: -80,
             opacity: 0,
 
             // total animation time for each letter
@@ -117,7 +117,7 @@ export default function ContactUs() {
 
         gsap.from(letters, {
             // start letters lower (hint: from 200px)
-            y: -100,
+            y: -80,
             opacity: 0,
 
             // total animation time for each letter
@@ -216,13 +216,12 @@ export default function ContactUs() {
                             <div className="grid grid-cols-2 gap-3">
                                 <div className="flex flex-col ">
                                     <label
-                                        className={`${emailFocused || clientData.email ? "translate-y-0 text-[#e9d6d6] font-bold" : "translate-y-9"} transition-all duration-500 text-[#aaa] focus:text-[#EDE8D0]`} htmlFor="Email">Email</label>
+                                        className={`${emailFocused || clientData.email ? "translate-y-0 text-[#e9d6d6] font-bold" : "translate-y-9"} transition-all duration-500 text-[#aaa] focus:text-[#EDE8D0]`} htmlFor="email">Email</label>
                                     <input onFocus={() => setEmailFocused(true)} onBlur={() => setEmailFocused(false)}
                                         value={clientData.email} onChange={(e) => setClientData({ ...clientData, email: e.target.value })} type="email" id="email" name="email"
                                         className="bg-transparent border-b-4 border-[#e9d6d6] py-2 focus:outline-none"></input>
                                 </div>
                                 {/* PHONE NUMBER */}
-                                {/* TEST 2 */}
                                 <div className="flex flex-col">
                                     <label
                                         className={`${phoneNumberFocused || clientData.phoneNumber ? "translate-y-0 text-[#e9d6d6] font-bold" : "translate-y-9"} transition-all duration-500 text-[#aaa] focus:text-[#EDE8D0]`} htmlFor="phoneNumber">Phone Number</label>
