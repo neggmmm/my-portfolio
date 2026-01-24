@@ -35,22 +35,6 @@ export default function Hero() {
                 </Link>
               </div>
           </div>
-          <Link
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              document.querySelector("#contactUs")?.scrollIntoView();
-            }}
-          >
-            <div className="absolute bottom-40 right-30 md:right-40">
-              <CircularText
-                text="OPEN TO WORK | FULLSTACK | "
-                onHover="pause"
-                spinDuration={20}
-                className="custom-class "
-              />
-            </div>
-          </Link>
         </div>
       </div>
 
