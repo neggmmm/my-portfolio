@@ -5,18 +5,16 @@ import ContactUs from "./contactUs/page";
 import Projects from "./projects/page";
 import Hero from "./hero/page";
 import Skills from "./skills/page";
-import PixelCursor from "./Components/PixelCursor";
 import PixelCursorDot from "./Components/PixelCursorDot";
-
 
 export default function Home() {
   const skillsRef = useRef(null);
-  const aboutRef = useRef(null)
+  const aboutRef = useRef(null);
   const { darkMode, setDarkMode, menuOpen } = useDarkMode();
-  const [cursorColor, setCursorColor] = useState("#000")
+  const [cursorColor, setCursorColor] = useState("#000");
 
-  const contactRef = useRef(null)
-  const [pixelEnabled, setPixelEnabled] = useState(true)
+  const contactRef = useRef(null);
+  const [pixelEnabled, setPixelEnabled] = useState(true);
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -26,7 +24,7 @@ export default function Home() {
           setDarkMode(false);
         }
       },
-      { threshold: 0.4 }
+      { threshold: 0.4 },
     );
     observer.observe(skillsRef.current);
     // observer.observe(aboutRef.current);
@@ -34,38 +32,36 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-  setCursorColor(darkMode && !menuOpen ? "#fff" : "#000")
-}, [darkMode, menuOpen])
+    setCursorColor(darkMode && !menuOpen ? "#fff" : "#000");
+  }, [darkMode, menuOpen]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setPixelEnabled(!entry.isIntersecting)
+        setPixelEnabled(!entry.isIntersecting);
       },
-      { threshold: 0.2 }
-    )
+      { threshold: 0.2 },
+    );
 
-    if (contactRef.current) observer.observe(contactRef.current)
+    if (contactRef.current) observer.observe(contactRef.current);
 
-    return () => observer.disconnect()
-  }, [])
+    return () => observer.disconnect();
+  }, []);
   return (
     <div
-      className={`transition-colors duration-1000 ${darkMode ? "bg-[#111] text-white" : "bg-white text-[#111]"
-        }`}
+      className={`transition-colors duration-1000 ${
+        darkMode ? "bg-[#111] text-white" : "bg-white text-[#111]"
+      }`}
     >
       <PixelCursorDot color={cursorColor} />
       <Hero />
-      <div ref={aboutRef}>
-      </div>
+      <div ref={aboutRef}></div>
       <Projects />
       <div ref={skillsRef}>
         <Skills />
-        </div>
-        <div ref={contactRef}>
-
+      </div>
+      <div ref={contactRef}>
         <ContactUs />
-        
       </div>
     </div>
   );
