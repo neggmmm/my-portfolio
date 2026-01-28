@@ -6,14 +6,12 @@ import { useDarkMode } from "../context/DarkModeContext";
 import Link from "next/link";
 
 export default function Projects() {
-  const [isHovered, setIsHovered] = useState(false);
   const [isZooming, setIsZooming] = useState(false);
   const lastProjectRef = useRef(null);
   const [scrollDir, setScrollDir] = useState("down");
   const projectsRef = useRef(null);
   const [scale, setScale] = useState(1);
   const { setDarkMode, darkMode } = useDarkMode();
-  const [btnHoverd, setBtnHovered] = useState(false);
   const [hoveredProject1, setHoveredProject1] = useState(null);
   const [hoveredProject2, setHoveredProject2] = useState(null);
   const [hoveredProject3, setHoveredProject3] = useState(null);
@@ -101,7 +99,7 @@ export default function Projects() {
         transition: "transform 0.1s ease-out",
         zIndex: 0,
       }}
-      className="transition-transform duration-400 select-none"
+      className="transition-transform text-xs md:text-lg  duration-400 select-none"
       id="projects"
     >
       <div
@@ -132,7 +130,7 @@ export default function Projects() {
 
           {/* Overlay text and content */}
           <div
-            className={`${hoveredProject1 ? "opactiy-100" : "opacity-0"} transition-all duration-500 absolute text-[#232323] goldman-regular z-10 bottom-1/4  w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm`}
+            className={`${hoveredProject1 ? "opactiy-100" : "opacity-0"} transition-all duration-500 md:absolute text-[#232323] goldman-regular z-10 bottom-1/4  md:w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm`}
           >
             A SaaS and White label platform that enables restaurants to create
             and manage digital menus accessible via QR codes, enhancing customer
@@ -185,7 +183,7 @@ export default function Projects() {
           />
 
           <div
-            className={`${hoveredProject2 ? "opactiy-100" : "opacity-0"} transition-all duration-500 absolute text-[#232323] goldman-regular z-10 bottom-1/4  w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm`}
+            className={`${hoveredProject2 ? "opactiy-100" : "opacity-0"} transition-all duration-500 md:absolute text-[#232323] goldman-regular z-10 bottom-1/4  md:w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm`}
           >
             An Angular-based e-commerce application with a focus on fashion
             products, featuring a user-friendly interface, product catalog,
@@ -226,7 +224,7 @@ export default function Projects() {
             </p>
           </div>
         </Link>
-        <div className="relative h-[100vh] flex items-end overflow-hidden">
+        <div className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-white">
           {/* Background image that fills the entire card */}
           <Image
             src="/project-1.png"
@@ -237,7 +235,7 @@ export default function Projects() {
 
           {/* Overlay text and content */}
           <div
-            className={`${hoveredProject3 ? "opactiy-100" : "opacity-0"} transition-all duration-500 absolute text-[#232323] goldman-regular z-10 bottom-1/4  w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm`}
+            className={`${hoveredProject3 ? "opacity-100" : "opacity-0"} transition-all duration-500 md:absolute text-[#232323] goldman-regular z-10 bottom-1/4 md:w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm`}
           >
             An e-commerce platform built with React, Node.js, and MongoDB,
             featuring user authentication, product management, shopping cart
@@ -290,7 +288,7 @@ export default function Projects() {
             />
             {/* Overlay text and content */}
             <div
-              className={`${hoveredProject4 ? "opactiy-100" : "opacity-0"} transition-all duration-500 absolute text-[#232323] goldman-regular z-10 bottom-1/4  w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm`}
+              className={`${hoveredProject4 ? "opactiy-100" : "opacity-0"} transition-all duration-500 md:absolute text-[#232323] goldman-regular z-10 bottom-1/4 md:w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm`}
             >
               My personal portfolio website showcasing my projects, skills, and
               experience as a full-stack developer. Built with Next.js, Tailwind
