@@ -3,34 +3,34 @@ import ScrollReveal from "../Components/ScrollReveal";
 
 export default function Skills() {
   return (
-    <div id="skills" className="relative overflow-hidden h-[100vh] lg:h-[120vh] select-none z-21 mx-20 goldman-regular">
+    <div id="skills" className="relative -mt-30 overflow-hidden lg:h-[120vh] select-none z-21 mx-20 goldman-regular">
 
       {/* Scroll sections */}
       <div className="text-9xl">
         <ScrollReveal
           baseOpacity={20}
           baseRotation={5}
-          skills={"redux | Hooks | class/function components"}
+          skills={"React | NextJs | Angular | Tailwind | React Hooks | Redux | React Query | Lazy Loading | Component Architecture "}
         >
-          React
+          Frontend
         </ScrollReveal>
-
+        <p className="block lg:hidden text-lg text-[#aaa5a5]">React | NextJs | Angular | Tailwind | React Hooks | Redux | React Query | Lazy Loading </p>
         <ScrollReveal
           baseOpacity={20}
           baseRotation={5}
-          skills={"express | nest | layered architecture | RESTful APIs | GraphQL | JWT"}
+          skills={"NodeJs | Express | NestJs | RESTful APIs | API validation | Backend Architecture | GraphQL | JWT Authentication | Webhooks"}
         >
-          NodeJS
+          Backend
         </ScrollReveal>
-
+        <p className="block lg:hidden text-lg text-[#aaa5a5]">NodeJs | Express | NestJs | RESTful APIs | API validation | Backend Architecture | GraphQL | JWT Authentication | Webhooks</p>
         <ScrollReveal
           baseOpacity={20}
           baseRotation={5}
-          skills={"PostgreSQL | MongoDB | MySQL | Sequelize | Mongoose"}
+          skills={"PostgreSQL | MongoDB | MySQL | Sequelize | Redis | Mongoose | Database Design | Data Modeling | Query Optimization"}
         >
-          DATABASE
+          Database
         </ScrollReveal>
-
+        <p className="block lg:hidden text-lg text-[#aaa5a5]">PostgreSQL | MongoDB | MySQL | Sequelize | Redis | Mongoose | Database Design | Data Modeling | Query Optimization</p>
         <ScrollReveal
           baseOpacity={20}
           baseRotation={5}
@@ -38,6 +38,7 @@ export default function Skills() {
         >
           Animations
         </ScrollReveal>
+        <p className="block lg:hidden text-lg text-[#aaa5a5]">GSAP | Framer Motion | Lottie | CSS animations</p>
       </div>
 
       {/* Centralized overlay text */}
