@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Notable&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Notable&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -13,6 +13,51 @@
   cursor: none;
 }
 
+.logo-name {
+  position: relative;
+  display: inline-block;
+}
+
+/* BEFORE "<" */
+.logo-name::before {
+  content: "<";
+  position: absolute;
+  right: 90;
+  font-weight: 400;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all 0.6s ease;
+  -webkit-transition: all 0.6s ease;
+  -moz-transition: all 0.6s ease;
+  -ms-transition: all 0.6s ease;
+  -o-transition: all 0.6s ease;
+  -webkit-transform: translateX(10px);
+  -moz-transform: translateX(10px);
+  -ms-transform: translateX(10px);
+  -o-transform: translateX(10px);
+}
+
+/* AFTER "/>" */
+.logo-name::after {
+  content: "/>";
+  position: absolute;
+  font-weight: 400;
+  left: 95;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.4s ease;
+}
+
+/* HOVER STATE */
+.logo-name:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.logo-name:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -53,10 +98,10 @@
 }
 
 ::-webkit-scrollbar {
-  width: 12px; 
+  width: 12px;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(37, 37, 37) /* semi-transparent */
+  background-color: rgb(37, 37, 37); /* semi-transparent */
 }
 ::-webkit-scrollbar-track {
   background: transparent; /* 👈 key part */
@@ -118,7 +163,6 @@
     -webkit-text-fill-color: white !important;
   }
 }
-
 
 .goldman-regular {
   font-family: "Goldman", sans-serif;
@@ -217,63 +261,62 @@
 
 .text-first {
   font-size: 10rem;
-    @media (max-width: 1450px ){
+  @media (max-width: 1450px) {
     font-size: 9rem;
   }
-    @media (max-width: 1150px ){
+  @media (max-width: 1150px) {
     font-size: 8rem;
   }
-  @media (max-width: 920px ){
+  @media (max-width: 920px) {
     font-size: 6rem;
   }
-    @media (max-width: 720px ){
+  @media (max-width: 720px) {
     font-size: 4rem;
   }
-  @media (max-width: 600px ){
+  @media (max-width: 600px) {
     font-size: 3rem;
   }
 }
 
-.text-8xl{
-
+.text-8xl {
 }
 .text-brand {
   font-size: 25rem;
-    @media (max-width: 1450px ){
+  @media (max-width: 1450px) {
     font-size: 20rem;
   }
-    @media (max-width: 1150px ){
+  @media (max-width: 1150px) {
     font-size: 15rem;
   }
-  @media (max-width: 920px ){
+  @media (max-width: 920px) {
     font-size: 10rem;
   }
-    @media (max-width: 720px ){
+  @media (max-width: 720px) {
     font-size: 9rem;
   }
-  @media (max-width: 600px ){
+  @media (max-width: 600px) {
     font-size: 6rem;
   }
 }
 
 .text-9xl {
   font-size: 30rem;
-    @media (max-width: 1700px ){
+  @media (max-width: 1700px) {
     font-size: 25rem;
   }
-    @media (max-width: 1450px ){
+  @media (max-width: 1450px) {
     font-size: 20rem;
   }
-    @media (max-width: 1150px ){
+  @media (max-width: 1150px) {
     font-size: 15rem;
   }
-  @media (max-width: 920px ){
+  @media (max-width: 920px) {
     font-size: 10rem;
   }
-    @media (max-width: 720px ){
+  @media (max-width: 720px) {
     font-size: 9rem;
   }
-  @media (max-width: 600px ){
+  @media (max-width: 600px) {
     font-size: 6rem;
   }
 }
