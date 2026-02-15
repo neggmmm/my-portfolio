@@ -14,7 +14,6 @@ export default function Home() {
   const [cursorColor, setCursorColor] = useState("#000");
 
   const contactRef = useRef(null);
-  const [pixelEnabled, setPixelEnabled] = useState(true);
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -35,18 +34,6 @@ export default function Home() {
     setCursorColor(darkMode && !menuOpen ? "#fff" : "#000");
   }, [darkMode, menuOpen]);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setPixelEnabled(!entry.isIntersecting);
-      },
-      { threshold: 0.2 },
-    );
-
-    if (contactRef.current) observer.observe(contactRef.current);
-
-    return () => observer.disconnect();
-  }, []);
   return (
     <div
       className={`transition-colors duration-1000 ${
