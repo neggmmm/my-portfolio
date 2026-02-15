@@ -8,8 +8,10 @@ export default function Skills() {
   {skill:"Database", details:"PostgreSQL | MongoDB | MySQL | Sequelize | Redis | Mongoose | Database Design | Data Modeling | Query Optimization"},
   {skill:"Animations", details:"GSAP | Framer Motion | Lottie | CSS animations | scroll-triggered animations"}]
   return (
-    <div id="skills" className="relative -mt-30 overflow-hidden lg:h-[120vh] select-none z-21 mx-20 goldman-regular">
-
+    <div
+      id="skills"
+      className="relative -mt-30 overflow-hidden lg:h-[120vh] select-none z-21 mx-20 goldman-regular"
+    >
       {/* Scroll sections */}
       <div className="text-9xl">
         {skills.map((item, index) => (
@@ -27,12 +29,12 @@ export default function Skills() {
       </div>
 
       {/* Centralized overlay text */}
-      <div className="fixed inset-0 hidden md:flex items-center justify-end pointer-events-none mr-20 ">
+      <div className="fixed inset-0 hidden lg:flex items-center justify-end pointer-events-none mr-20 ">
         <div className="w-1/3">
-        <p
-          id="customized-overlay"
-          className="text-3xl font-bold opacity-0 transition-opacity duration-300 text-center"
-        ></p>
+          <p
+            id="customized-overlay"
+            className="text-3xl font-bold opacity-0 transition-opacity duration-300 text-center"
+          ></p>
         </div>
       </div>
     </div>
