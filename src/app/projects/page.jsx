@@ -12,10 +12,7 @@ export default function Projects() {
   const projectsRef = useRef(null);
   const [scale, setScale] = useState(1);
   const { setDarkMode, darkMode } = useDarkMode();
-  const [hoveredProject1, setHoveredProject1] = useState(null);
-  const [hoveredProject2, setHoveredProject2] = useState(null);
-  const [hoveredProject3, setHoveredProject3] = useState(null);
-  const [hoveredProject4, setHoveredProject4] = useState(null);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
   useEffect(() => {
     let ticking = false; // prevents spamming scroll updates
 
@@ -91,6 +88,45 @@ export default function Projects() {
     return () => observer.disconnect();
   }, [scrollDir]);
 
+  const projects = [
+    {
+      title: "SaaS & White label Platform",
+      subTitle: "ITI Graduation Project",
+      arrow: true,
+      description:
+        "A SaaS and White label platform that enables restaurants to create and manage digital menus accessible via QR codes, enhancing customer experience and streamlining order management.",
+      image: "/project-3.png",
+      github: "https://github.com/GraduationMERN/restaurant-system",
+      live: "https://brandbite-1ybv.vercel.app/"
+    },
+    {
+      title: "Fashion Market",
+      subTitle: "Angular E-Commerce",
+      arrow: true,
+      description: "An Angular-based e-commerce application with a focus on fashion products, featuring a user-friendly interface, product catalog,shopping cart, and secure checkout process.",
+      image: "/project-2.png",
+      github: "https://cloth-store-angular-three.vercel.app/",
+      live: "https://cloth-store-angular-three.vercel.app/"
+    },
+    {
+      title: "X Market",
+      subTitle: "MERN E-Commerce",
+      arrow: true,
+      description:
+        " An e-commerce platform built with React, Node.js, and MongoDB, featuring user authentication, product management, shopping cart functionality, and secure payment integration.",
+      image: "/project-1.png",
+      github: "",
+      live: "https://ecommerce-platform-graduation.vercel.app/"
+    },
+    {
+      title: "PORTFOLIO",
+      subTitle: "NEGM",
+      description:
+        "My personal portfolio website showcasing my projects, skills, and experience as a full-stack developer. Built with Next.js, Tailwind CSS and GSAP for animation.",
+      image: "/project-4.jpg",
+      github: "https://github.com/neggmmm/my-portfolio",
+    }
+  ]
   return (
     <div
       ref={projectsRef}
@@ -102,210 +138,64 @@ export default function Projects() {
       className="transition-transform text-xs md:text-lg  duration-400 select-none"
       id="projects"
     >
-      <div
-        onMouseEnter={() => setHoveredProject1(true)}
-        onMouseLeave={() => setHoveredProject1(false)}
-        className="sticky top-23"
-      >
-        <div
-          className={`${hoveredProject1 ? "bg-black text-white border-black " : "bg-white text-black "} space-mono-bold border transition-all border-[#999] items-center px-3  w-full h-8 flex justify-between font-bold`}
-        >
-          <p>SaaS & White label Platform</p>
-          <p className="flex justify-center items-center">
-            ITI Graduation Project
-          </p>
-          <p>
-            <MdArrowOutward />
-          </p>
-        </div>
-        {/* </Link> */}
-        <div className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-white">
-          {/* Background image that fills the entire card */}
-          <Image
-            src="/project-3.png"
-            alt="Admin-dashboard"
-            fill // Next.js shortcut for full width + height
-            className={`transition-all duration-300 object-cover ${hoveredProject1 ? "brightness-90" : "brightness-40"}`} // covers area + slightly faded
-          />
+      {projects.map((project, index) => {
+        const isHovered = hoveredIndex === index;
 
-          {/* Overlay text and content */}
+        return (
           <div
-            className={`${hoveredProject1 ? "opactiy-100" : "opacity-0"} transition-all duration-500 md:absolute text-[#232323] goldman-regular z-10 bottom-1/4  md:w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm`}
+            key={project.title}
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
+            className="sticky"
+            style={{position: "sticky", top: `${100 + index * 20}px` }}   // ✅ dynamic sticky
           >
-            A SaaS and White label platform that enables restaurants to create
-            and manage digital menus accessible via QR codes, enhancing customer
-            experience and streamlining order management.
-            <div className="flex items-center justify-center gap-8 mt-5">
-              <Link
-                href="https://github.com/GraduationMERN/restaurant-system"
-                target="_blank"
-                className="flex justify-center items-center gap-2 text-[#FCFCFC] py-2 px-4 rounded-full bg-gray-900 hover:scale-110 transition-all duration-200"
-              >
-                Github
-              </Link>
-              <Link
-                href="https://brandbite-1ybv.vercel.app/"
-                target="_blank"
-                className="flex justify-center items-center gap-2 text-[#FCFCFC] py-2 px-4 rounded-full bg-black hover:scale-110 transition-all duration-200"
-              >
-                Live Demo
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div
-        onMouseEnter={() => setHoveredProject2(true)}
-        onMouseLeave={() => setHoveredProject2(false)}
-        className="sticky top-28"
-      >
-        <Link
-          target="_blank"
-          href="https://cloth-store-angular-three.vercel.app/"
-        >
-          <div
-            className={`${hoveredProject2 ? "bg-black text-white border-black" : "bg-white text-black "} space-mono-bold border transition-all border-[#999] items-center px-3  w-full h-8 flex justify-between font-bold`}
-          >
-            <p>Fashion Market</p>
-            <p>Angular E-Commerce</p>
-            <p>
-              <MdArrowOutward />
-            </p>
-          </div>
-        </Link>
-        <div className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-white">
-          <Image
-            src="/project-2.png"
-            alt="e-commerce"
-            fill
-            className={` transition-all duration-300 object-cover ${hoveredProject2 ? "brightness-90" : "brightness-40"}`} // covers area + slightly faded
-          />
-
-          <div
-            className={`${hoveredProject2 ? "opactiy-100" : "opacity-0"} transition-all duration-500 md:absolute text-[#232323] goldman-regular z-10 bottom-1/4  md:w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm`}
-          >
-            An Angular-based e-commerce application with a focus on fashion
-            products, featuring a user-friendly interface, product catalog,
-            shopping cart, and secure checkout process.
-            <div className="flex items-center justify-center gap-8 mt-5">
-              <Link
-                href="https://github.com/Fantasitc-4-2/cloth-store-angular"
-                target="_blank"
-                className="flex justify-center items-center gap-2 text-[#FCFCFC] py-2 px-4 rounded-full bg-gray-900 hover:scale-110 transition-all duration-200"
-              >
-                Github
-              </Link>
-              <Link
-                href="https://cloth-store-angular-three.vercel.app/"
-                target="_blank"
-                className="flex justify-center items-center gap-2 text-[#FCFCFC] py-2 px-4 rounded-full bg-black hover:scale-110 transition-all duration-200"
-              >
-                Live Demo
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div
-        onMouseEnter={() => setHoveredProject3(true)}
-        onMouseLeave={() => setHoveredProject3(false)}
-        className="sticky top-33"
-      >
-        <Link target="_blank" href="https://e-commerce-mern-beige.vercel.app/">
-          <div
-            className={`${hoveredProject3 ? "bg-black text-white border-black" : "bg-white text-black"} space-mono-bold  border transition-all border-[#999] items-center px-3  w-full h-8 flex justify-between font-bold`}
-          >
-            <p>X Market</p>
-            <p>E-Commerce</p>
-            <p>
-              <MdArrowOutward />
-            </p>
-          </div>
-        </Link>
-        <div className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-white">
-          {/* Background image that fills the entire card */}
-          <Image
-            src="/project-1.png"
-            alt="e-commerce"
-            fill
-            className={` transition-all duration-500 object-cover ${hoveredProject3 ? "brightness-90" : "brightness-40"}`} // covers area + slightly faded
-          />
-
-          {/* Overlay text and content */}
-          <div
-            className={`${hoveredProject3 ? "opacity-100" : "opacity-0"} transition-all duration-500 md:absolute text-[#232323] goldman-regular z-10 bottom-1/4 md:w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm`}
-          >
-            An e-commerce platform built with React, Node.js, and MongoDB,
-            featuring user authentication, product management, shopping cart
-            functionality, and secure payment integration.
-            <div className="flex items-center justify-center gap-8 mt-5">
-              <Link
-                href="https://github.com/Fantasitc-4-2/e-commerce-MERN"
-                target="_blank"
-                className="flex justify-center items-center gap-2 text-[#FCFCFC] py-2 px-4 rounded-full bg-gray-900 hover:scale-110 transition-all duration-200"
-              >
-                Github
-              </Link>
-              <Link
-                href="https://e-commerce-mern-beige.vercel.app/"
-                target="_blank"
-                className="flex justify-center items-center gap-2 text-[#FCFCFC] py-2 px-4 rounded-full bg-black hover:scale-110 transition-all duration-200"
-              >
-                Live Demo
-              </Link>
-            </div>
-          </div>
-        </div>
-        {/* <Link target="_blank" href="https://e-commerce-mern-beige.vercel.app/"> */}
-      </div>
-      <div
-        onMouseEnter={() => setHoveredProject4(true)}
-        onMouseLeave={() => setHoveredProject4(false)}
-        className="h-[150vh]"
-      >
-        <div className="sticky top-38">
-          <Link href="/">
+            {/* Header */}
             <div
-              className={`${hoveredProject4 ? "bg-black text-white border-black" : "bg-white text-black"} space-mono-bold border transition-all border-[#999] items-center px-3  w-full h-8 flex justify-between font-bold`}
+              className={`${isHovered
+                ? "bg-black text-white border-black"
+                : "bg-white text-black"
+                } space-mono-bold border transition-all border-[#999] items-center px-3 w-full h-8 flex justify-between font-bold`}
             >
-              <p>PORTFOLIO</p>
-              <p>NEGM</p>
-              <p>WE ARE HERE</p>
+              <p>{project.title}</p>
+              <p className="text-xs">{project.subTitle}</p>
+              {project.arrow ? <MdArrowOutward /> : <p>WE ARE HERE</p>}
             </div>
-          </Link>
-          <div
-            ref={lastProjectRef}
-            className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-white"
-          >
-            {/* Background image that fills the entire card */}
-            <Image
-              src="/project-4.jpg"
-              alt="e-commerce"
-              fill
-              className={`transition-all duration-300 object-cover ${hoveredProject4 ? "brightness-90" : "brightness-40"}`}
-            />
-            {/* Overlay text and content */}
-            <div
-              className={`${hoveredProject4 ? "opactiy-100" : "opacity-0"} transition-all duration-500 md:absolute text-[#232323] goldman-regular z-10 bottom-1/4 md:w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm`}
-            >
-              My personal portfolio website showcasing my projects, skills, and
-              experience as a full-stack developer. Built with Next.js, Tailwind
-              CSS and GSAP for animation.
-              <div className="flex items-center justify-center gap-8 mt-5">
-                <Link
-                  href="https://github.com/neggmmm/my-portfolio"
-                  target="_blank"
-                  className="flex justify-center items-center gap-2 text-[#FCFCFC] py-2 px-4 rounded-full bg-gray-900 hover:scale-110 transition-all duration-200"
-                >
-                  Github
-                </Link>
+
+            {/* Image Section */}
+            <div className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-white">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className={`transition-all duration-300 object-cover ${isHovered ? "brightness-90" : "brightness-40"
+                  }`}
+              />
+
+              {/* Overlay */}
+              <div
+                className={`${isHovered ? "opacity-100" : "opacity-0"
+                  } transition-all duration-500 md:absolute text-[#232323] goldman-regular z-10 bottom-1/4 md:w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm`}
+              >
+                {project.description}
+
+                <div className="flex items-center gap-8 mt-5">
+                  {project.github && (
+                    <Link href={project.github} target="_blank">
+                      Github
+                    </Link>
+                  )}
+
+                  {project.live && (
+                    <Link href={project.live} target="_blank">
+                      Live Demo
+                    </Link>
+                  )}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        );
+      })}
     </div>
   );
 }
