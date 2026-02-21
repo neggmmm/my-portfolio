@@ -82,22 +82,6 @@ export default function PixelCursorDot({ color = "#000" }) {
       className="fixed top-0 left-0 z-[9999] pointer-events-none"
       style={{ transform: "translate(0, 0)" }}
     >
-      {/* SPARK LINES (hidden until animated) */}
-      <div className="absolute top-3 left-3">
-        {[...Array(6)].map((_, i) => (
-          <div
-            key={i}
-            ref={(el) => (sparksRef.current[i] = el)}
-            style={{
-              width: 6,
-              height: 2,
-              backgroundColor: color,
-              position: "absolute",
-            }}
-          />
-        ))}
-      </div>
-
       {/* MAIN PIXEL ARROW */}
       <div className="grid grid-cols-6">
         {arrowShape.map((cell, i) => (

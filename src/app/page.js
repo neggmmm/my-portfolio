@@ -12,7 +12,6 @@ export default function Home() {
   const aboutRef = useRef(null);
   const { darkMode, setDarkMode, menuOpen } = useDarkMode();
   const [cursorColor, setCursorColor] = useState("#000");
-
   const contactRef = useRef(null);
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -36,9 +35,8 @@ export default function Home() {
 
   return (
     <div
-      className={`transition-colors duration-1000 ${
-        darkMode ? "bg-[#111] text-white" : "bg-white text-[#111]"
-      }`}
+      className={`transition-colors duration-1000 ${darkMode ? "bg-[#111] text-white" : "bg-white text-[#111]"
+        }`}
     >
       <PixelCursorDot color={cursorColor} />
       <Hero />
@@ -46,9 +44,9 @@ export default function Home() {
       <Projects />
       <div ref={skillsRef}>
         <Skills />
-      </div>
       <div ref={contactRef}>
         <ContactUs />
+      </div>
       </div>
     </div>
   );
