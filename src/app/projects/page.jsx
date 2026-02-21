@@ -154,10 +154,10 @@ export default function Projects() {
               className={`${isHovered
                 ? "bg-black text-white border-black"
                 : "bg-white text-black"
-                } space-mono-bold border transition-all border-[#999] items-center px-3 w-full h-8 flex justify-between font-bold`}
+                } space-mono-bold border transition-all border-[#dedede] items-center px-3 w-full h-8 flex justify-between font-bold`}
             >
               <p>{project.title}</p>
-              <p className="text-xs">{project.subTitle}</p>
+              <p>{project.subTitle}</p>
               {project.arrow ? <MdArrowOutward /> : <p>WE ARE HERE</p>}
             </div>
 
