@@ -97,16 +97,17 @@ export default function Projects() {
         "A SaaS and White label platform that enables restaurants to create and manage digital menus accessible via QR codes, enhancing customer experience and streamlining order management.",
       image: "/project-3.png",
       github: "https://github.com/GraduationMERN/restaurant-system",
-      live: "https://brandbite-1ybv.vercel.app/"
+      live: "https://brandbite-1ybv.vercel.app/",
     },
     {
       title: "Fashion Market",
       subTitle: "Angular E-Commerce",
       arrow: true,
-      description: "An Angular-based e-commerce application with a focus on fashion products, featuring a user-friendly interface, product catalog,shopping cart, and secure checkout process.",
+      description:
+        "An Angular-based e-commerce application with a focus on fashion products, featuring a user-friendly interface, product catalog,shopping cart, and secure checkout process.",
       image: "/project-2.png",
       github: "https://cloth-store-angular-three.vercel.app/",
-      live: "https://cloth-store-angular-three.vercel.app/"
+      live: "https://cloth-store-angular-three.vercel.app/",
     },
     {
       title: "X Market",
@@ -116,7 +117,7 @@ export default function Projects() {
         " An e-commerce platform built with React, Node.js, and MongoDB, featuring user authentication, product management, shopping cart functionality, and secure payment integration.",
       image: "/project-1.png",
       github: "",
-      live: "https://ecommerce-platform-graduation.vercel.app/"
+      live: "https://ecommerce-platform-graduation.vercel.app/",
     },
     {
       title: "PORTFOLIO",
@@ -125,8 +126,8 @@ export default function Projects() {
         "My personal portfolio website showcasing my projects, skills, and experience as a full-stack developer. Built with Next.js, Tailwind CSS and GSAP for animation.",
       image: "/project-4.jpg",
       github: "https://github.com/neggmmm/my-portfolio",
-    }
-  ]
+    },
+  ];
   return (
     <div
       ref={projectsRef}
@@ -147,14 +148,15 @@ export default function Projects() {
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
             className="sticky"
-            style={{position: "sticky", top: `${100 + index * 20}px` }}   // ✅ dynamic sticky
+            style={{ position: "sticky", top: `${100 + index * 20}px` }} // ✅ dynamic sticky
           >
             {/* Header */}
             <div
-              className={`${isHovered
-                ? "bg-black text-white border-black"
-                : "bg-white text-black"
-                } space-mono-bold border transition-all border-[#dedede] items-center px-3 w-full h-8 flex justify-between font-bold`}
+              className={`${
+                isHovered
+                  ? "bg-black text-white border-black"
+                  : "bg-white text-black"
+              } space-mono-bold border transition-all border-[#dedede] items-center px-3 w-full h-8 flex justify-between font-bold`}
             >
               <p>{project.title}</p>
               <p>{project.subTitle}</p>
@@ -167,26 +169,36 @@ export default function Projects() {
                 src={project.image}
                 alt={project.title}
                 fill
-                className={`transition-all duration-300 object-cover ${isHovered ? "brightness-90" : "brightness-40"
-                  }`}
+                className={`transition-all duration-300 object-cover ${
+                  isHovered ? "brightness-90" : "brightness-40"
+                }`}
               />
 
               {/* Overlay */}
               <div
-                className={`${isHovered ? "opacity-100" : "opacity-0"
-                  } transition-all duration-500 md:absolute text-[#232323] goldman-regular z-10 bottom-1/4 md:w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm`}
+                className={`${
+                  isHovered ? "opacity-100" : "opacity-0"
+                } transition-all duration-500 md:absolute text-[#232323] goldman-regular z-10 bottom-1/4 md:w-[30%] right-1/3 px-20 py-10 bg-white/40 backdrop-blur-sm`}
               >
                 {project.description}
 
                 <div className="flex items-center gap-8 mt-5">
                   {project.github && (
-                    <Link href={project.github} target="_blank">
+                    <Link
+                      className="bg-gray-800 text-white rounded-3xl px-4 py-2"
+                      href={project.github}
+                      target="_blank"
+                    >
                       Github
                     </Link>
                   )}
 
                   {project.live && (
-                    <Link href={project.live} target="_blank">
+                    <Link
+                      className="bg-white rounded-3xl px-4 py-2"
+                      href={project.live}
+                      target="_blank"
+                    >
                       Live Demo
                     </Link>
                   )}
