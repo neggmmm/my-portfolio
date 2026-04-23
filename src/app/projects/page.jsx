@@ -115,7 +115,7 @@ export default function Projects() {
       description:
         " An e-commerce platform built with React, Node.js, and MongoDB, featuring user authentication, product management, shopping cart functionality, and secure payment integration.",
       image: "/project-1.png",
-      github: "",
+      github: "https://github.com/Fantasitc-4-2/e-commerce-MERN",
       live: "https://ecommerce-platform-graduation.vercel.app/"
     },
     {
@@ -180,7 +180,7 @@ export default function Projects() {
 
                 <div className="flex items-center gap-8 mt-5">
                   {project.github && (
-                    <Link href={project.github} target="_blank">
+                    <Link className="bg-gray-800 rounded-2xl hover:bg-gray-700" href={project.github} target="_blank">
                       Github
                     </Link>
                   )}

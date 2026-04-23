@@ -29,27 +29,16 @@ export default function ContactUs() {
   gsap.registerPlugin(_ScrollTrigger);
 
   useGSAP(() => {
-    // hint: selecting all <span> letters inside the logo
     const letters = ".up-animate1 span";
-
     gsap.from(letters, {
-      // start letters lower (hint: from 200px)
       y: 150,
       opacity: 0,
-
-      // total animation time for each letter
       duration: 2,
-
-      // hint: makes movement smooth
       ease: "power2.out",
-
-      // hint: delays each letter slightly
       stagger: 0.5,
-
-      // scroll trigger settings
       scrollTrigger: {
         trigger: ".up-animate1",
-        start: "top 99%", // hint: animation starts when logo enters screen
+        start: "top 99%",
         toggleActions: "restart none none reset",
       },
       filter: "blur(20px)",
@@ -57,27 +46,16 @@ export default function ContactUs() {
   });
 
   useGSAP(() => {
-    // hint: selecting all <span> letters inside the logo
     const letters = ".up-animate2 span";
-
     gsap.from(letters, {
-      // start letters lower (hint: from 200px)
       y: 150,
       opacity: 0,
-
-      // total animation time for each letter
       duration: 2,
-
-      // hint: makes movement smooth
       ease: "power2.out",
-
-      // hint: delays each letter slightly
       stagger: 0.5,
-
-      // scroll trigger settings
       scrollTrigger: {
         trigger: ".up-animate2",
-        start: "top 99%", // hint: animation starts when logo enters screen
+        start: "top 99%",
         toggleActions: "restart none none reset",
       },
       filter: "blur(20px)",
@@ -85,27 +63,17 @@ export default function ContactUs() {
   });
 
   useGSAP(() => {
-    // hint: selecting all <span> letters inside the logo
     const letters = ".down-animate1 span";
 
     gsap.from(letters, {
-      // start letters lower (hint: from 200px)
       y: -80,
       opacity: 0,
-
-      // total animation time for each letter
       duration: 1,
-
-      // hint: makes movement smooth
       ease: "power2.out",
-
-      // hint: delays each letter slightly
       stagger: 0.5,
-
-      // scroll trigger settings
       scrollTrigger: {
         trigger: ".down-animate1",
-        start: "top 99%", // hint: animation starts when logo enters screen
+        start: "top 99%",
         toggleActions: "restart none none reset",
       },
       filter: "blur(20px)",
@@ -113,27 +81,17 @@ export default function ContactUs() {
   });
 
   useGSAP(() => {
-    // hint: selecting all <span> letters inside the logo
     const letters = ".down-animate2 span";
 
     gsap.from(letters, {
-      // start letters lower (hint: from 200px)
       y: -80,
       opacity: 0,
-
-      // total animation time for each letter
       duration: 1,
-
-      // hint: makes movement smooth
       ease: "power2.out",
-
-      // hint: delays each letter slightly
       stagger: 0.5,
-
-      // scroll trigger settings
       scrollTrigger: {
         trigger: ".down-animate2",
-        start: "top 99%", // hint: animation starts when logo enters screen
+        start: "top 99%",
         toggleActions: "restart none none reset",
       },
       filter: "blur(20px)",
