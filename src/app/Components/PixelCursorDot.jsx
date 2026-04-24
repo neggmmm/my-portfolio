@@ -1,43 +1,43 @@
-"use client"
-import { useEffect, useRef } from "react"
-import gsap from "gsap"
+"use client";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 export default function PixelCursorDot({ color = "#000" }) {
-  const cursorRef = useRef(null)
-  const sparksRef = useRef([])
+  const cursorRef = useRef(null);
+  const sparksRef = useRef([]);
 
   useEffect(() => {
-    if (window.innerWidth < 768) return
+    if (window.innerWidth < 768) return;
 
-    const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
-    const mouse = { x: pos.x, y: pos.y }
+    const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    const mouse = { x: pos.x, y: pos.y };
 
     const move = (e) => {
-      mouse.x = e.clientX
-      mouse.y = e.clientY
-    }
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    };
 
-    window.addEventListener("mousemove", move)
+    window.addEventListener("mousemove", move);
 
     const tick = () => {
-      pos.x += (mouse.x - pos.x) * 0.35
-      pos.y += (mouse.y - pos.y) * 0.35
+      pos.x += (mouse.x - pos.x) * 0.35;
+      pos.y += (mouse.y - pos.y) * 0.35;
 
-      const GRID = 4
-      const snappedX = Math.round(pos.x / GRID) * GRID
-      const snappedY = Math.round(pos.y / GRID) * GRID
+      const GRID = 4;
+      const snappedX = Math.round(pos.x / GRID) * GRID;
+      const snappedY = Math.round(pos.y / GRID) * GRID;
 
-      gsap.set(cursorRef.current, { x: snappedX, y: snappedY })
-    }
+      gsap.set(cursorRef.current, { x: snappedX, y: snappedY });
+    };
 
-    gsap.ticker.add(tick)
+    gsap.ticker.add(tick);
 
     // CLICK SPARKS 💥
     const handleClick = () => {
-      const sparks = sparksRef.current
+      const sparks = sparksRef.current;
       sparks.forEach((spark) => {
-        const angle = Math.random() * Math.PI * 2
-        const distance = 20 + Math.random() * 20
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 20 + Math.random() * 20;
 
         gsap.fromTo(
           spark,
@@ -49,37 +49,30 @@ export default function PixelCursorDot({ color = "#000" }) {
             scale: 0.5,
             duration: 0.4,
             ease: "power2.out",
-          }
-        )
-      })
-    }
+          },
+        );
+      });
+    };
 
-    window.addEventListener("mousedown", handleClick)
+    window.addEventListener("mousedown", handleClick);
 
     return () => {
-      window.removeEventListener("mousemove", move)
-      window.removeEventListener("mousedown", handleClick)
-      gsap.ticker.remove(tick)
-    }
-  }, [])
+      window.removeEventListener("mousemove", move);
+      window.removeEventListener("mousedown", handleClick);
+      gsap.ticker.remove(tick);
+    };
+  }, []);
 
   const arrowShape = [
-    1,0,0,0,0,0,
-    1,1,0,0,0,0,
-    1,1,1,0,0,0,
-    1,1,1,1,0,0,
-    1,1,1,1,1,0,
-    1,1,1,1,1,1,
-    1,1,1,1,0,0,
-    1,1,1,0,0,0,
-    1,1,0,0,0,0,
-    1,0,0,0,0,0,
-  ]
+    1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1,
+    1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1,
+    0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+  ];
 
   return (
     <div
       ref={cursorRef}
-      className="fixed top-0 left-0 z-[9999] pointer-events-none"
+      className="md:none lg:fixed top-0 left-0 z-[9999] pointer-events-none"
       style={{ transform: "translate(0, 0)" }}
     >
       {/* MAIN PIXEL ARROW */}
@@ -96,5 +89,5 @@ export default function PixelCursorDot({ color = "#000" }) {
         ))}
       </div>
     </div>
-  )
+  );
 }
